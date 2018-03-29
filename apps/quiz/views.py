@@ -38,7 +38,7 @@ def submit_quiz(request, id):
 		user = User.objects.get(id=request.session['user_id']),
 		category = Category.objects.get(id = request.session['cat_id']),
 		)
-	sleep(2)
+	sleep(1.5)
 	if 'quiz_counter' not in request.session:
 		request.session['quiz_counter'] = 1
 	if request.session['quiz_counter'] < 5:

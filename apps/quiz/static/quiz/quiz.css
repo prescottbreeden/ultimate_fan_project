@@ -135,7 +135,7 @@ footer {
 	transition-duration: .25s;
 	
 }
-.quiz{
+#quiz{
 	width: 70%;
 	margin: 0 auto;
 	/*border: 1px dashed black;*/
@@ -172,7 +172,7 @@ footer {
 	width: 100%;
 	background-color: green;
 	animation-name: timer;
-	animation-duration: 30s;
+	animation-duration: 15s;
 	animation-fill-mode: forwards;
 	animation-timing-function: linear;
 	animation-delay: 0s
@@ -193,6 +193,40 @@ footer {
 .user_info  {
 	text-align: center;
 }
+
+.slide_on {
+	animation-name: slide_on;
+	animation-duration: .4s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+.slide_off {
+	animation-name: slide_off;
+	animation-duration: .4s;
+	animation-delay: 1s;
+	animation-fill-mode: forwards;
+	animation-timing-function: ease-out;
+}
+
+@keyframes slide_off {
+	0% {
+		transform: translateX(0px);
+	}
+	100% {
+		transform: translateX(-1200px);
+	}
+}
+
+@keyframes slide_on {
+	0% {
+		transform: translateX(1200px);
+	}
+	100% {
+		transform: translateX(0px);
+	}
+}
+
 @keyframes timer {
 	0% {
 		width: 100%
