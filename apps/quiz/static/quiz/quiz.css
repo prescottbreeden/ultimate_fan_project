@@ -7,22 +7,7 @@ body {
 	background: #485563; 
 	color: #f2f2f2;
 }
-button {
-	display: inline;
-	padding: 10px;
-	/*border: 1px dashed black;*/
-	background-color: #DEDDDD;
-	color: black;
-	border-radius: 5px;
-	box-shadow: 0px 2px 0px #C9C9C9;
-}
-button:hover {
-	color: white;
-	background-color: green;
-	box-shadow: 0px 0px 0px black;
-	transform: translateY(2px);
-	transition-duration: .25s;
-}
+
 footer {
 	position: fixed;
 	bottom: 0;
@@ -127,7 +112,6 @@ footer {
 	/*flex-basis: 30%;*/
 }
 .category {
-	padding: 10px;
 	border-radius: 5px;
 	background-color: silver;
 	margin: 2px;
@@ -139,12 +123,17 @@ footer {
 	padding: 0;
 	text-transform: uppercase;
 	font-weight: bold;
+	padding: 13px;
+	outline: none;
 }
-
+.category button:hover {
+	color: white;
+}
 .category:hover {
 	background-color: orange;
 	color: white;
 	transition-duration: .25s;
+	
 }
 .quiz{
 	width: 70%;
@@ -160,6 +149,23 @@ footer {
 	margin-top: 20px;
 	display: flex;
 	justify-content: space-around;
+}
+.answer button {
+	display: inline;
+	padding: 10px;
+	/*border: 1px dashed black;*/
+	background-color: #DEDDDD;
+	color: black;
+	border-radius: 5px;
+	box-shadow: 0px 2px 0px #C9C9C9;
+}
+.answer button:hover {
+	color: white;
+	background-color: green;
+	box-shadow: 0px 0px 0px black;
+	transform: translateY(2px);
+	transition-duration: .25s;
+	cursor: pointer;
 }
 .timer {
 	height: 10px;

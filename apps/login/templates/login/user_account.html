@@ -6,13 +6,13 @@
 	{% load staticfiles %}
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 	<script type='text/javascript' src="{% static 'login/account.js' %}"></script>
-	<link rel="stylesheet" href="{% static 'login/account.css' %}" media="screen" title="no title"  charset="utf-8">
+	<link rel="stylesheet" href="{% static 'login/login.css' %}" media="screen" title="no title"  charset="utf-8">
 </head>
 <body>
 	<div class="header">
 		<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
 		<div class="login_logout">
-			<p>User: {{ user.alias }}</p>
+			<p>{{ user.alias }}</p>
 			<form action="{% url 'logout' %}" method="POST">
 			{% csrf_token %}
 			<input type="submit" value="Log Out">

@@ -14,7 +14,7 @@
 		<div class="header">
 			<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
 			<div class="login_logout">
-				<p>User: {{ user.alias }}</p>
+				<p>{{ user.alias }}</p>
 				<form action="{% url 'logout' %}" method="POST">
 				{% csrf_token %}
 				<input type="submit" value="Log Out">
