@@ -10,5 +10,6 @@ urlpatterns = [
     path('submit/<int:id>', views.submit_quiz, name = 'submit_quiz'),
     path('end', views.quiz_end, name = 'quiz_end'),
     path('quiz_stats', views.quiz_stats, name = 'quiz_stats'),
-    path('make_chart', views.make_chart, name = 'make_chart')
+    path('make_chart', views.make_chart, name = 'make_chart'),
+    path('last_quiz', views.last_quiz, name = 'last_quiz'),
     ]

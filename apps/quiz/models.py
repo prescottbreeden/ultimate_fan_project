@@ -6,6 +6,34 @@ import json
 from django.http import HttpResponse
 
 class Quiz_Manager(models.Manager):
+	def last_quiz(self, look_At):
+		all_quiz_dict = {'quizzes': Quiz.objects.filter(user = User.objects.get(id=look_At))}
+		all_quiz = []
+		for quiz in all_quiz_dict['quizzes']:
+			all_quiz.append(quiz)
+		last_test = []
+		for i in range (0,5):
+			last_test.append(all_quiz.pop())
+		correct = 0
+		incorrect = 0
+
+		for question in last_test:
+			if question.score == 1:
+				correct+= 1
+			else:
+				incorrect+=1
+
+		chart_data = {
+			'labels': ["Correct", "Incorrect"],
+			'datasets': [{
+				'label': "Last Quiz",
+				'backgroundColor': ['rgb(132,255,99)','rgb(255, 99, 132)'],
+				'borderColor': 'rgb(0, 0, 0)',
+				'data': [ correct, incorrect ],
+			}]
+		},
+		return HttpResponse(json.dumps(chart_data), content_type="application/json")
+
 	def make_chart(self, look_At):
 		chart_data = {
 			'labels': ["Correct", "Incorrect"],

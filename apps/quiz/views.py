@@ -2,6 +2,7 @@ from django.shortcuts import render, HttpResponse, redirect
 from time import sleep
 from apps.quiz.models import *
 from apps.login.models import *
+from operator import itemgetter
 
 def quiz(request):
 	if 'user_id' not in request.session:
@@ -59,8 +60,31 @@ def quiz_end(request):
 def quiz_stats(request):
 	if 'user_id' not in request.session:
 		return redirect('/')
-	context = {'user': User.objects.get(id=request.session['user_id'])}
+	userlist = User.objects.all()
+	boardlist = []
+	for user in userlist:
+		boardstats = [user.alias, 
+			len(Quiz.objects.filter(user = user, score= '1')),
+			len(Quiz.objects.filter(user = user)), 
+			int(100*len(Quiz.objects.filter(user= user, score= '1')) / len(Quiz.objects.filter(user = user))) ]
+		boardlist.append(boardstats)
+
+	boardlist.sort(key=lambda x: x[1])
+	boardlist = boardlist[::-1]
+	counter = 1
+	for user in boardlist:
+		user.append(counter)
+		counter += 1
+
+	context = {
+		'leaderboard': boardlist,
+		'user': User.objects.get(id=request.session['user_id']),
+		}
+
 	return render(request, 'quiz/quiz_chart_test.html', context)
 
 def make_chart (request):
 	return Quiz.objects.make_chart(request.session['user_id'])
+
+def last_quiz (request):
+    return Quiz.objects.last_quiz(request.session['user_id'])

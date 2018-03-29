@@ -1,52 +1,82 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
-	<title>You are bad</title>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-	{% load static %}
-	<link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" media="screen" title="no title"  charset="utf-8">
-	<script type="text/javascript" src="{% static 'quiz/quiz_chart_test.js' %}"></script>
+    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
+    <title>Quiz Stats</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" media="screen" title="no title"  charset="utf-8">
+    <script type="text/javascript" src="{% static 'quiz/quiz_chart_test.js' %}"></script>
 </head>
 <body>
 <div class="wrapper">
-		<div class="header">
-			<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
-			<div class="login_logout">
-				<p>{{ user.alias }}</p>
-				<form action="{% url 'logout' %}" method="POST">
-				{% csrf_token %}
-				<input type="submit" value="Log Out">
-				</form>
+        <div class="header">
+            <h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
+            <div class="login_logout">
+                <p>{{ user.alias }}</p>
+                <form action="{% url 'logout' %}" method="POST">
+                {% csrf_token %}
+                <input type="submit" value="Log Out">
+                </form>
+            </div>
+        </div>
+        <div class="container">
+            <div class="box">
+                <div class="selectors"><a href="/">Home</a></div>
+                <div class="explain">Return to the home page</div>
+            </div>
+            <div class="box">
+                <div class="selectors"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+                <div class="explain">Test your knowledge!</div>
+            </div>
+            <div class="box">
+                <div class="selectors"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
+                <div class="explain">How boss are you?</div>
+            </div>
+            <div class="box">
+                <div class="selectors"><a href="{% url 'account_info' %}">Your Account</a></div>
+                <div class="explain">Your Stuffs!</div>
+            </div>
+        </div>
+		<div class="all_charts">
+			<div class="chart">
+				<h4 class="user_recent">Last quiz for {{user.alias}}</h4>
+				<canvas id="lastTest" width="400" height="400"></canvas>
+			</div>
+			<div class="chart">
+				<h4 class="user_history">All quizzes for {{user.alias}}</h4>
+				<canvas id="myChart" width="400" height="400"></canvas>
 			</div>
 		</div>
-		<div class="container">
-			<div class="box">
-				<div class="selectors"><a href="/">Home</a></div>
-				<div class="explain">Return to the home page</div>
-			</div>
-			<div class="box">
-				<div class="selectors"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
-				<div class="explain">Test your knowledge!</div>
-			</div>
-			<div class="box">
-				<div class="selectors"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
-				<div class="explain">How boss are you?</div>
-			</div>
-			<div class="box">
-				<div class="selectors"><a href="{% url 'account_info' %}">Your Account</a></div>
-				<div class="explain">Your Stuffs!</div>
-			</div>
-		</div>
-		<h2 class="user_info">History for {{ user.alias }}</h2>
-		<div class="chart">
-			<canvas id="myChart" width="400" height="400"></canvas>
-		</div>
-	</div>
-	<footer>
-		<p>Copyright 2018 - Come at me bro - (ง'̀-'́)ง</p>
-	</footer>
+        <div class="stat_divider">
+        	<h2>Leaderboards</h2>
+        </div>
+        <div class="leaderboard">
+            <table class="leader_data">
+                <thead>
+                	<th></th>
+                    <th class='table_alias'>Alias</th>
+                    <th>Correct</th>
+                    <th>Total</th>
+                    <th>Accuracy</th>
+                </thead>
+                {% for user in leaderboard %}
+                <tr>
+                	<td>{{user.4}}</td>
+                    <td class='table_alias'>{{user.0}}</td>
+                    <td>{{user.1}}</td>
+                    <td>{{user.2}}</td>
+                    <td>{{user.3}}%</td>
+                </tr>
+                {% endfor %}
+            </table>
+
+        </div>
+    </div>
+    <footer>
+        <p>Copyright 2018 - Come at me bro - (ง'̀-'́)ง</p>
+    </footer>
 
 
 </body>

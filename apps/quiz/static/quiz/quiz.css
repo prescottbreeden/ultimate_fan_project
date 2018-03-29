@@ -9,12 +9,61 @@ body {
 }
 
 footer {
+/*	position: fixed;*/
+	bottom: 0;
+	padding-left: 14px;
+}
+.hack_footer {
 	position: fixed;
 	bottom: 0;
 	padding-left: 14px;
 }
+
+.stat_divider {
+	width: 100vdh;
+	background-color: #3D3D3D;
+	height: 50px;
+	margin: 20px 0;
+	text-align: center;
+	font-family: Michroma;
+	text-transform: uppercase;
+}
+.stat_divider h2 {
+	line-height: 50px;
+}
+.leaderboard {
+    display: flex;
+    justify-content: space-around;
+    margin-bottom: 100px;
+/*    border: 1px dashed red;*/
+}
+.leaderboard thead {
+	font-family: Michroma;
+	/*border: 1px dashed red;*/
+}
+.leaderboard table {
+	text-align: center;
+	/*border: 1px dashed red;*/
+}
+.leaderboard th {
+	padding: 0px 10px;
+	text-decoration: underline;
+	/*border: 1px dashed red;*/
+}
+.table_alias {
+	text-align: left;
+	padding-left: 0;
+}
 .wrapper {
 	width: 100vw;
+	min-height: 100vh:;
+}
+.all_charts {
+	display: flex;
+	justify-content: space-around;
+}
+.all_charts h4{
+	text-align: center;
 }
 .chart {
 	margin: 0 auto;
