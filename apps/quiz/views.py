@@ -59,7 +59,16 @@ def quiz_end(request):
 def quiz_stats(request):
 	if 'user_id' not in request.session:
 		return redirect('/')
-	context = {'user': User.objects.get(id=request.session['user_id'])}
+
+	userlist = User.objects.all()
+	boardlist = []
+	for user in userlist:
+		boardstats = [user.alias, len(Quiz.objects.filter(user = user, score= '1')), int(100*len(Quiz.objects.filter(user= user, score= '1')) / len(Quiz.objects.filter(user = user))) ]
+		boardlist.append(boardstats)
+	context = {
+		'leaderboard': boardlist
+	}
+	print (context)
 	return render(request, 'quiz/quiz_chart_test.html', context)
 
 def make_chart (request):

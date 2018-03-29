@@ -43,6 +43,23 @@
 		<div class="chart">
 			<canvas id="myChart" width="400" height="400"></canvas>
 		</div>
+		<div class="leaderboard">
+			<table>
+				<tr>
+					<th>Alias</th>
+					<th>Number Correct</th>
+					<th>Accuracy</th>
+				</tr>
+				{% for user in leaderboard %}
+				<tr>
+					<td>{{user.0}}</td>
+					<td>{{user.1}}</td>
+					<td>{{user.2}}%</td>
+				</tr>
+				{% endfor %}
+			</table>
+
+		</div>
 	</div>
 	<footer>
 		<p>Copyright 2018 - Come at me bro - (ง'̀-'́)ง</p>
