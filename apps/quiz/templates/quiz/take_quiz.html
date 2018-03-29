@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
+	<title>Quiz O Matic!</title>
+	{% load static %}
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script type='text/javascript' src="{% static 'quiz/take_quiz.js' %}"></script>
+	<link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" media="screen" title="no title"  charset="utf-8">
+</head>
+<body>
+	<div class="header">
+	<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
+		<div class="login_logout">
+			<p>User: {{ user.alias }}</p>
+			<form action="{% url 'logout' %}" method="POST">
+			{% csrf_token %}
+			<input type="submit" value="Log Out">
+			</form>
+		</div>
+	</div>
+	<div class="container">
+		<div class="box">
+			<div class="selectors"><a href="/">Home</a></div>
+			<div class="explain">Return to the home page</div>
+		</div>
+		<div class="box">
+			<div class="selectors"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+			<div class="explain">Test your knowledge!</div>
+		</div>
+		<div class="box">
+			<div class="selectors"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
+			<div class="explain">How boss are you?</div>
+		</div>
+		<div class="box">
+			<div class="selectors"><a href="{% url 'account_info' %}">Your Account</a></div>
+			<div class="explain">Stuffs!</div>
+		</div>
+	</div>
+	<div class="quiz">
+		<h3>{{ questions.trivia }}</h3>
+		<div class="answers">
+			{% for answers in questions.answer_list %}
+			<form action="{% url 'submit_quiz' answers.value %}" method="POST">
+			{% csrf_token %}
+			<p class='answer'> 
+			<button type="submit" value="{{ answers.value }}">
+			{{ answers.answer.athlete.name }}
+			</button></p></form>
+			{% endfor %}
+		</div>
+		<br>
+		<div class="timer"></div>
+		<div class="response_answer"></div>
+	</div>
+	<footer>
+		<p>Copyright 2018 - Come at me bro - (ง'̀-'́)ง</p>
+	</footer>
+</body>
+</html>
