@@ -141,9 +141,6 @@ class People(models.Model):
 		related_name  = "category"
 	)
 
-	def __repr__(self):
-		return f'<Quiz object: {self.name}'
-
 
 
 
