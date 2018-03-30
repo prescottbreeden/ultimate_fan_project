@@ -12,9 +12,15 @@ $(document).ready(function(){
 		    // The data for our dataset
 		    data: myData,
 		        // Configuration options go here
-		    options: {}
-		});
-
+	        options: {
+		        legend: {
+		            labels: {
+		                fontColor: "white",
+		                fontSize: 14
+		            }
+		        },
+	        }
+	    });
 	});
 
 	$.get('/quiz/last_quiz', function(data){
@@ -26,7 +32,14 @@ $(document).ready(function(){
 	        // The data for our dataset
 	        data: myData,
 	        // Configuration options go here
-	        options: {}
+	        options: {
+		        legend: {
+		            labels: {
+		                fontColor: "white",
+		                fontSize: 14,
+		            }
+		        },
+	        }
 	    });
 	});
 

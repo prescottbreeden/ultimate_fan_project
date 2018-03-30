@@ -7,18 +7,26 @@ body {
 	background: #485563; 
 	color: #f2f2f2;
 }
-
+input {
+	padding: 3px;
+	border-radius: 5px;
+}
+h4 {
+	font-family: 'Michroma', sans-serif;
+}
 footer {
 /*	position: fixed;*/
 	bottom: 0;
 	padding-left: 14px;
+}
+.login_select {
+	margin-top: 30px;
 }
 .hack_footer {
 	position: fixed;
 	bottom: 0;
 	padding-left: 14px;
 }
-
 .stat_divider {
 	width: 100vdh;
 	background-color: #3D3D3D;

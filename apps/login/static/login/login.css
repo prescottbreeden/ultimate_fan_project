@@ -6,7 +6,7 @@ body {
 	background: #485563; 
 	color: #f2f2f2;
 }
-h4 {
+h2 {
 	text-transform: uppercase;
 	font-family: 'Michroma', sans-serif;
 	text-align: center;
@@ -19,7 +19,28 @@ input {
 footer {
 	position: fixed;
 	bottom: 0;
-	padding-left: 14px;
+	display: flex;
+	justify-content: space-between;
+	width: 100vw;
+
+}
+footer p {
+	margin: 0 20px;
+}
+.credits a {
+	outline: none;
+	border: none;
+	background: none;
+	text-decoration: none;
+	color: white;
+	font-size: 14px;
+	font-family: 'Times New Roman', Times, serif;
+}
+.credits a:hover {
+	outline: none;
+	border: none;
+	background: none;
+	color: red;
 }
 .container {
 	display: flex;
@@ -92,6 +113,9 @@ footer {
 	background: none;
 	color: red;
 }
+.login_select {
+	font-weight: normal;
+}
 .landing_title {
 	margin: 0 10px;
 	margin-top: 15px;
@@ -125,6 +149,7 @@ footer {
 	animation-name: slide_up;
 	animation-duration: 1s;
 	animation-fill-mode: forwards;
+	letter-spacing: 1px;
 }
 .error_messages{
 	margin: 0 auto;

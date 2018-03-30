@@ -44,3 +44,12 @@ def account_info(request):
 	if 'user_id' not in request.session:
 		return redirect('/')
 	return render(request, 'login/user_account.html',{'user': User.objects.get(id=request.session['user_id'])})
+
+def credits(request):
+	return render(request, 'login/credits.html', {'user': User.objects.get(id=request.session['user_id'])})
+
+
+
+
+
+#

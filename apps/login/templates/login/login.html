@@ -37,7 +37,7 @@
 	</div>
 	<div class="content {{request.session.status}}">
 		<div class="registration_form">
-		<h4>Register</h4>
+		<h2>Register</h2>
 		<table>
 		<form action="{% url 'register' %}" method="post">
 			{% csrf_token %}
@@ -74,7 +74,7 @@
 		</div>
 		<div class="registration_divider"></div>
 		<div class="login_form {{request.session.status}}">
-			<h4 class="(( session['status'] ))">Log in</h4>
+			<h2 class="(( session['status'] ))">Log in</h2>
 			<form action="{% url 'login' %}" method='POST'>
 			{% csrf_token %}
 			<table>
@@ -102,12 +102,13 @@
 	</div>
 	{% if 'user_id' in request.session %}
 		<div class="welcome">
-			<h4 class='fade_in slide_up'>Welcome  {{ user.alias }}! </h4>
-			<h4>Ultimate Fan is a </h4>
+			<h2 class='fade_in slide_up'>Welcome  {{ user.alias }}! </h2>
+			<h5 class='login_select'>Select Quizzes to Begin!</h5>
 		</div>
 	{% endif %}
 	<footer>
 		<p>Copyright 2018 - All rights reserved - (ง'̀-'́)ง</p>
+		<p class='credits'></p>
 	</footer>
 </body>
 </html>
