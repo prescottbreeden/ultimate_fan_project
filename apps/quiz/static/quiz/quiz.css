@@ -2,7 +2,6 @@
 	margin: 0;
 	padding: 0;
 }
-
 body {
 	background: #485563; 
 	color: #f2f2f2;
@@ -15,13 +14,15 @@ h4 {
 	font-family: 'Michroma', sans-serif;
 }
 footer {
-/*	position: fixed;*/
 	bottom: 0;
 	padding-left: 14px;
 }
-.right_answer{
+.target1 {
 	background-color: green;
 	color: red;
+}
+.right_answer {
+	background-color: green;
 }
 .login_select {
 	margin-top: 30px;
@@ -47,20 +48,16 @@ footer {
     display: flex;
     justify-content: space-around;
     margin-bottom: 100px;
-/*    border: 1px dashed red;*/
 }
 .leaderboard thead {
 	font-family: Michroma;
-	/*border: 1px dashed red;*/
 }
 .leaderboard table {
 	text-align: center;
-	/*border: 1px dashed red;*/
 }
 .leaderboard th {
 	padding: 0px 10px;
 	text-decoration: underline;
-	/*border: 1px dashed red;*/
 }
 .table_alias {
 	text-align: left;
@@ -163,14 +160,11 @@ footer {
 }
 .categories {
 	margin: 10px auto;
-	/*border: 2px dashed black;*/
 	height: 130px;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-around;
-	/*align-content: center;*/
 	flex-wrap: wrap;
-	/*flex-basis: 30%;*/
 }
 .category {
 	border-radius: 5px;
@@ -199,7 +193,6 @@ footer {
 #quiz{
 	width: 70%;
 	margin: 0 auto;
-	/*border: 1px dashed black;*/
 	padding: 20px;
 	background-color: #EEEEEE;
 	color: black;
@@ -211,10 +204,14 @@ footer {
 	display: flex;
 	justify-content: space-around;
 }
+.answer {
+	padding: 5px;
+	border-radius: 5px;
+}
+
 .answer button {
 	display: inline;
 	padding: 10px;
-	/*border: 1px dashed black;*/
 	background-color: #DEDDDD;
 	color: black;
 	border-radius: 5px;
@@ -298,6 +295,7 @@ footer {
 		background-color: red;
 	}
 }
+
 
 
 

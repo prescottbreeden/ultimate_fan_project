@@ -21,7 +21,6 @@ $(document).ready(function(){
                 responsive: true,
                 scales: {
                     xAxes: [{
-
                         ticks:{
                             // stepSize : 1,
 

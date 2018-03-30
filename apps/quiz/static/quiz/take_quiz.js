@@ -18,7 +18,18 @@ $(document).ready(function(){
                 '<h1 class="incorrect">Incorrect...</h1>'
                 );
             $('#quiz').addClass('slide_off');
-            // $("button[value='1']").addClass('right_answer');
+
+            // flash correct answer
+            $("p.div_value1").addClass('right_answer');
+            setTimeout(function() {
+                $("p.div_value1").removeClass('right_answer')
+                }, 250);
+            setTimeout(function() {
+                $("p.div_value1").addClass('right_answer')
+                }, 500);
+            setTimeout(function() {
+                $("p.div_value1").removeClass('right_answer')
+                }, 750);
         };
     });
 
