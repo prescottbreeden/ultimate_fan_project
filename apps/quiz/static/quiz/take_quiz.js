@@ -18,6 +18,7 @@ $(document).ready(function(){
                 '<h1 class="incorrect">Incorrect...</h1>'
                 );
             $('#quiz').addClass('slide_off');
+            // $("button[value='1']").addClass('right_answer');
         };
     });
 

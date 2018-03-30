@@ -2,6 +2,8 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.contrib import messages
 from apps.login.models import User
 from .models import User
+from apps.quiz.models import *
+from operator import itemgetter
 
 
 # landing page
@@ -48,7 +50,8 @@ def account_info(request):
 def credits(request):
 	return render(request, 'login/credits.html', {'user': User.objects.get(id=request.session['user_id'])})
 
-
+def bar_data(request):
+	return Quiz.objects.bar_data(request.session['user_id'])
 
 
 

@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
-	<title>Your Account Info</title>
-	{% load staticfiles %}
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<script type='text/javascript' src="{% static 'login/account.js' %}"></script>
-	<link rel="stylesheet" href="{% static 'login/login.css' %}" media="screen" title="no title"  charset="utf-8">
+    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
+    <title>Your Account Info</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    {% load staticfiles %}
+    <link rel="stylesheet" href="{% static 'login/login.css' %}" media="screen" title="no title"  charset="utf-8">
+    <script type="text/javascript" src="{% static 'login/user_account.js' %}"></script>
 </head>
 <body>
 	<div class="header">
@@ -38,8 +39,11 @@
 		</div>
 	</div>
 	<div class="content">
-		Stuff goes here...
-	</div>
+		<h1>{{user.alias}}</h1>
+			<div class="chart">
+				<canvas id="bar_data" width="400" height="400"></canvas>
+			</div>
+		</div>
 	<footer>
 		<p>Copyright 2018 - All rights reserved - (ง'̀-'́)ง</p>
 	</footer>

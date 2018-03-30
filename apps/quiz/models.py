@@ -6,6 +6,43 @@ import json
 from django.http import HttpResponse
 
 class Quiz_Manager(models.Manager):
+	def bar_data(self, look_At):
+		category_list = []
+		for category in Category.objects.all():
+			category_list.append(category.activity_type)
+		correct_data = []
+		incorrect_data = []
+		bgc_correct = []
+		bgc_incorrect = []
+
+		borderColor = []
+
+		for category in category_list:
+			correct_data.append(len(Quiz.objects.filter(user= User.objects.get(id=look_At),score = 1, category = Category.objects.get(activity_type= category))))
+			incorrect_data.append(len(Quiz.objects.filter(user= User.objects.get(id=look_At),score = 0, category = Category.objects.get(activity_type= category))))
+			bgc_correct.append('rgba(132,255,99, 1)')
+			bgc_incorrect.append('rgba(255, 99, 132, 1)')
+			borderColor.append('rgba(0,0,0,1)')
+
+		chart_data = {
+			'labels': category_list,
+			'datasets': [{
+				'label': 'Correct',
+				'data': correct_data,
+				'backgroundColor': bgc_correct,
+				'borderColor': borderColor,
+				'borderWidth': 1
+				},
+			{
+				'label': 'Incorrect',
+				'data': incorrect_data,
+				'backgroundColor': bgc_incorrect,
+				'borderColor': borderColor,
+				'borderWidth': 1
+			}]
+		}
+		return HttpResponse(json.dumps(chart_data), content_type="application/json")
+
 	def last_quiz(self, look_At):
 		all_quiz_dict = {'quizzes': Quiz.objects.filter(user = User.objects.get(id=look_At))}
 		all_quiz = []
