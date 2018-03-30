@@ -38,7 +38,7 @@ $(document).ready(function(){
 		                fontColor: "white",
 		                fontSize: 14,
 		            }
-		        },
+		        }
 	        }
 	    });
 	});

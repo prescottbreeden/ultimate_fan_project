@@ -9,7 +9,42 @@ $(document).ready(function(){
             // The data for our dataset
             data: myData,
             // Configuration options go here
-            options: {}
+            options: {
+                legend: {
+                    labels: {
+                        fontColor: 'white'
+                        }
+                },
+                tooltips: {
+                    mode: 'label'
+                },
+                responsive: true,
+                scales: {
+                    xAxes: [{
+
+                        ticks:{
+                            // stepSize : 1,
+
+                         },
+                        stacked: true,
+                        gridLines: {
+                            lineWidth: 0,
+                            // color: "rgba(255,255,255,1)"
+                        }
+                    }],
+                    yAxes: [{
+                        stacked: true,
+                        gridLines: {
+                            // color: "rgba(255,255,255,1)"
+                        },
+                        ticks: {
+                            min: 0,
+                            // stepSize: 1,
+                        }
+
+                    }]
+                }
+            }
         });
     });
-})
+});

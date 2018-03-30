@@ -20,7 +20,7 @@ class Quiz_Manager(models.Manager):
 		for category in category_list:
 			correct_data.append(len(Quiz.objects.filter(user= User.objects.get(id=look_At),score = 1, category = Category.objects.get(activity_type= category))))
 			incorrect_data.append(len(Quiz.objects.filter(user= User.objects.get(id=look_At),score = 0, category = Category.objects.get(activity_type= category))))
-			bgc_correct.append('rgba(132,255,99, 1)')
+			bgc_correct.append('rgba(106,216,77, 1)')
 			bgc_incorrect.append('rgba(255, 99, 132, 1)')
 			borderColor.append('rgba(0,0,0,1)')
 
@@ -76,7 +76,7 @@ class Quiz_Manager(models.Manager):
 			'labels': ["Correct", "Incorrect"],
 			'datasets': [{
 				'label': "All Data",
-				'backgroundColor': ['rgb(132,255,99)','rgb(255, 99, 132)'],
+				'backgroundColor': ['rgba(106,216,77, 1)','rgb(255, 99, 132)'],
 				'borderColor': 'rgb(0, 0, 0)',
 				'data': [ len(Quiz.objects.filter(score=1, user = User.objects.get(id=look_At) ) ), len( Quiz.objects.filter(score=0, user = User.objects.get(id=look_At) ) ) ],
 			}]

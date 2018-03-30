@@ -11,7 +11,7 @@
 </head>
 <body>
 	<div class="header">
-		<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
+	<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
 		<div class="login_logout">
 			<p>{{ user.alias }}</p>
 			<form action="{% url 'logout' %}" method="POST">
@@ -38,12 +38,12 @@
 			<div class="explain">Your Stuffs!</div>
 		</div>
 	</div>
+	<h2 class='account_alias'>{{user.alias}}</h2>
 	<div class="content">
-		<h1>{{user.alias}}</h1>
-			<div class="chart">
-				<canvas id="bar_data" width="400" height="400"></canvas>
-			</div>
+		<div class="chart">
+			<canvas id="bar_data" width="400" height="400"></canvas>
 		</div>
+	</div>
 	<footer>
 		<p>Copyright 2018 - All rights reserved - (ง'̀-'́)ง</p>
 	</footer>

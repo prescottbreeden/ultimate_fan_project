@@ -21,7 +21,9 @@ class User_Manager(models.Manager):
 			result['errors']['last_name'] = 'Last name cannot be blank'
 		if postData['alias'] == '':
 			result['errors']['alias'] = 'Alias cannot be blank'
-
+		existing = User.objects.filter(alias = postData['alias'])
+		if existing:
+			result['errors']['alias'] = 'Alias already registered'
 		# email field validation
 		if postData['email'] == '':
 			result['errors']['email'] = 'Email cannot be blank'
