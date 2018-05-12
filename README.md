@@ -11,6 +11,4 @@ To Do:
 - make mobile version that can show correct/incorrect responses during quiz taking
 - reduce registration to alias/email/password
 - login with email or alias
-- forgot password functionality
 - compare your overall quiz history with another user
-- buff out questions
