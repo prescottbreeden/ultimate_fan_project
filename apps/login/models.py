@@ -6,7 +6,7 @@ EMAIL_REGEX = re.compile(r'^[a-zA-Z0-9.+_-]+@[a-zA-Z0-9._-]+\.[a-zA-Z]+$')
 
 class User_Manager(models.Manager):
 
-	##### REGISTRATION VALIDATION #####
+	# REGISTRATION VALIDATION
 	def validate_registration(self, postData):
 		print('validation started')
 		result = {
@@ -24,6 +24,7 @@ class User_Manager(models.Manager):
 		existing = User.objects.filter(alias = postData['alias'])
 		if existing:
 			result['errors']['alias'] = 'Alias already registered'
+
 		# email field validation
 		if postData['email'] == '':
 			result['errors']['email'] = 'Email cannot be blank'
@@ -42,6 +43,7 @@ class User_Manager(models.Manager):
 		if len(result['errors']):
 			return result
 		else:
+
 		# create new user
 			user_password = postData['password'] 
 			hashed = bcrypt.hashpw(user_password.encode(), bcrypt.gensalt())
@@ -56,7 +58,7 @@ class User_Manager(models.Manager):
 			result['user_id'] = new_user.id
 			return result
 
-	##### LOGIN VALIDATION #####
+	# LOGIN VALIDATION
 	def validate_login(self, postData):
 		result = {
 			'status' : False,
