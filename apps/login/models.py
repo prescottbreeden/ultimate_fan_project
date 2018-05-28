@@ -37,7 +37,7 @@ class User_Manager(models.Manager):
 		# password field validation
 		if postData['password'] != postData['cpassword']:
 			result['errors']['password'] = 'Passwords do not match'
-		if len(postData['password']) <8:
+		if len(postData['password']) < 8:
 			result['errors']['password'] = 'Passwords must be at least 8 characters long.' 
 
 		if len(result['errors']):
