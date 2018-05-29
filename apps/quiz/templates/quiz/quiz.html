@@ -72,14 +72,18 @@
 				<div class="nav__details">Your Stuffs!</div>
 			</div>
 		</nav>
-		<div class="select_quiz">
-			<h4>Select a category for quiz:</h4>
-			<div class="categories">
+		<div class="quizzes">
+			<div class="heading-secondary u-center-text">
+				<h2>Select a category for quiz:</h2>
+			</div>
+			<div class="quizzes__categories">
 			{% for category in categories %}
-				<div class="category">
-					<form type="hidden" action="{% url 'create_quiz' category.id %}">
-					<button type="submit" class='cat_btn'>{{ category.activity_type }}</button>	
-					</form>
+				<div class="quizzes__categories--item">
+					<a href="{% url 'create_quiz' category.id %}" class='quizzes__categories--link'>{{ category.activity_type }}</a>	
+					<svg class="quizzes__categories--svg">
+						{% load static %}
+						<use xlink:href="../static/quiz/sprite.svg#icon-chevron-thin-right"></use>
+					</svg>
 				</div>
 			{% endfor %}
 			</div>
