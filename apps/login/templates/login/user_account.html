@@ -1,51 +1,80 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
-    <title>Your Account Info</title>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    {% load staticfiles %}
-    <link rel="stylesheet" href="{% static 'login/login.css' %}" media="screen" title="no title"  charset="utf-8">
-    <script type="text/javascript" src="{% static 'login/user_account.js' %}"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Ultimate Fan</title>
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,400,700|Source+Sans+Pro:300,400,700" rel="stylesheet">
+	{% load static %}
+	<link rel="stylesheet" href="{% static 'login/styles.min.css' %}" media="screen" title="no title"  charset="utf-8">
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous">
+	</script>
+	<script src="{% static 'quiz/app.js' %}"></script>
 </head>
 <body>
-	<div class="header">
-	<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
-		<div class="login_logout">
-			<p>{{ user.alias }}</p>
-			<form action="{% url 'logout' %}" method="POST">
-			{% csrf_token %}
-			<input type="submit" value="Log Out">
-			</form>
-		</div>
-	</div>
 	<div class="container">
-		<div class="box">
-			<div class="selectors"><a href="/">Home</a></div>
-			<div class="explain">Return to the home page</div>
-		</div>
-		<div class="box">
-			<div class="selectors"><a href="/quiz">Quizzes</a></div>
-			<div class="explain">Test your knowledge!</div>
-		</div>
-		<div class="box">
-			<div class="selectors"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
-			<div class="explain">How boss are you?</div>
-		</div>
-		<div class="box">
-			<div class="selectors"><a href="{% url 'account_info' %}">Your Account</a></div>
-			<div class="explain">Your Stuffs!</div>
-		</div>
-	</div>
+		<header class="header">
+			<div class="header__logo-box">
+				<div class="logo__background-bottom">
+					<div class="logo__background-middle">
+						<div class="logo__background-top">
+							<div class="logo__text">
+								<h1>Ultimate Fan</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="header__userbox">
+				<div class="header__userbox-box">
+					<svg class="header__userbox-icon">
+						{% load static %}
+						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
+						<span>{{ user.alias }}</span>
+					</svg>
+				</div>
+				<div class="header__userbox-box">
+					<form action="" method="POST">
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
+							<span>sign in</span>
+						</svg>
+					</form>
+				</div>
+			</div>
+		</header>
+		<nav class="nav">
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+				<div class="nav__details">Test your knowledge!</div>
+			</div>
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
+				<div class="nav__details">How boss are you?</div>
+			</div>
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'account_info' %}">Account</a></div>
+				<div class="nav__details">Your Stuffs!</div>
+			</div>
+		</nav>
+
 	<h2 class='account_alias'>{{user.alias}}</h2>
 	<div class="content">
 		<div class="chart">
 			<canvas id="bar_data" width="400" height="400"></canvas>
 		</div>
 	</div>
-	<footer>
-		<p>Copyright 2018 - All rights reserved - (ง'̀-'́)ง</p>
-	</footer>
+		<footer class="footer">
+			<div class="footer__info">
+				<p>Built With ~ Python, Django, SQLite, Bcrypt, Beautiful Soup, Chart.js, CSS3, HTML5, SASS, jQuery, AWS</p>
+				<p>All data for the trivia questions were scraped using Beautiful Soup.</p>
+				<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
+			</div>
+		</footer>
 </body>
 </html>

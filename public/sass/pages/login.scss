@@ -6,12 +6,12 @@
 @import '../base/_typography';
 @import '../base/_utilities';
 
-//components
-@import '../components/_btn';
-@import '../components/_form';
-@import '../components/_landing-hero';
-
 //layout
 @import '../layout/_footer';
 @import '../layout/_header';
 @import '../layout/_navigation';
+
+//components
+@import '../components/_btn';
+@import '../components/_form';
+@import '../components/_landing-hero';
