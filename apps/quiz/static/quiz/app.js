@@ -8,10 +8,13 @@ $(document).ready(function() {
     })
 
     $('#sign_in_box').click(function() {
-        $('#welcome_hero').stop().animate({left: -3000}, 'slow');
-        setTimeout(function() {
-            $('.btn__form').addClass('u-shadow');
-        },500)
+        $.ajax({
+            type: "GET",
+            url: "/logout",
+            success: function(res){
+                location.reload();
+            }
+        })
     })
 
     $(document).on('click', '#close_forms', function() {

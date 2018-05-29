@@ -7,7 +7,7 @@
 	<title>Ultimate Fan</title>
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,400,700|Source+Sans+Pro:300,400,700" rel="stylesheet">
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'quiz/styles.min.css' %}" media="screen" title="no title"  charset="utf-8">
+	<link rel="stylesheet" href="{% static 'quiz/styles.css' %}" media="screen" title="no title"  charset="utf-8">
 	<script
 		src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -30,23 +30,33 @@
 				</div>
 			</div>
 			<div class="header__userbox">
-				<div class="header__userbox-box">
-					<svg class="header__userbox-icon">
-						{% load static %}
-						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
-						<span>{{ user.alias }}</span>
-					</svg>
-				</div>
-				<div class="header__userbox-box">
-					<form action="" method="POST">
-						<svg class="header__userbox-action">
+					<div class="header__userbox-box">
+						<svg class="header__userbox-icon">
 							{% load static %}
-							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
-							<span>sign in</span>
+							<use xlink:href="../static/quiz/sprite.svg#icon-user"></use>
+							{% if 'user_id' not in request.session %}
+							<span>Please Log In</span>
+							{% else %}
+							<span>{{ user.alias }}</span>
+							{% endif %}
 						</svg>
-					</form>
+					</div>
+					<div class="header__userbox-box">
+						{% if 'user_id' not in request.session %}
+							<svg class="header__userbox-action">
+								{% load static %}
+								<use xlink:href="../static/quiz/sprite.svg#icon-enter"></use>
+								<span>Sign In</span>
+							</svg>
+						{% else %}
+							<svg class="header__userbox-action">
+								{% load static %}
+								<use xlink:href="../static/quiz/sprite.svg#icon-exit"></use>
+								<span id="sign_in_box">Sign Out</span>
+							</svg>
+						{% endif %}
+					</div>
 				</div>
-			</div>
 		</header>
 		<nav class="nav">
 			<div class="nav__box">

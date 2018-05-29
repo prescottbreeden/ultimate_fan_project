@@ -8,12 +8,13 @@
     border-bottom: 3px solid var(--color-primary-light);
     
     &__logo-box {
-        width: 50%;
+        margin-left: 3rem;
+        width: 60%;
     }
 
     &__userbox {
-        width: 50%;
-        margin: 0 3rem;
+        width: 40%;
+        margin-right: 3rem;
         display: flex;
         justify-content: flex-end;
 

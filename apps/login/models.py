@@ -15,10 +15,6 @@ class User_Manager(models.Manager):
 		}
 
 		# name field validation
-		if postData['first_name'] == '':
-			result['errors']['first_name'] = 'First name cannot be blank'
-		if postData['last_name'] == '':
-			result['errors']['last_name'] = 'Last name cannot be blank'
 		if postData['alias'] == '':
 			result['errors']['alias'] = 'Alias cannot be blank'
 		existing = User.objects.filter(alias = postData['alias'])
@@ -48,8 +44,6 @@ class User_Manager(models.Manager):
 			user_password = postData['password'] 
 			hashed = bcrypt.hashpw(user_password.encode(), bcrypt.gensalt())
 			new_user = User.objects.create(
-				first_name = postData['first_name'],
-				last_name = postData['last_name'],
 				alias = postData['alias'],
 				email = postData['email'],
 				password = hashed,

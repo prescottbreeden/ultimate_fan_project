@@ -43,7 +43,7 @@
 			{% for answers in questions.answer_list %}
 			<form action="{% url 'submit_quiz' answers.value %}" method="POST">
 			{% csrf_token %}
-			<p class='answer div_value{{answers.value}}''> 
+			<p class='answer div_value{{answers.value}}'> 
 			<button type="submit" value="{{ answers.value }}">
 			{{ answers.answer.athlete.name }}
 			</button></p></form>

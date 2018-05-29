@@ -36,14 +36,19 @@
     display: flex;
     backface-visibility: hidden;
 
+    
+
     &__info {
         display: flex;
         flex-direction: column;
         justify-content: flex-end;
         align-items: stretch;
+        // border: 1px dashed red;
     }
 
     &__text {
+        // border: 1px dashed red;
+        padding: 2rem 2rem;
         display: inline-block;
         flex: 1 0 25%;
         font-family: 'Source Sans Pro';

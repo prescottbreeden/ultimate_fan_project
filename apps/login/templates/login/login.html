@@ -5,9 +5,11 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Ultimate Fan</title>
+	
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,400,700|Source+Sans+Pro:300,400,700" rel="stylesheet">
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'login/styles.min.css' %}" media="screen" title="no title"  charset="utf-8">
+	<link rel="shortcut icon" type="image/png" href="{% static 'login/favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'login/styles.css' %}" media="screen" title="no title"  charset="utf-8">
 	<script
 		src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
@@ -17,9 +19,7 @@
 </head>
 <body>
 	<div class="container">
-
 		<header class="header">
-
 			<div class="header__logo-box">
 				<div class="logo__background-bottom">
 					<div class="logo__background-middle">
@@ -37,18 +37,29 @@
 					<svg class="header__userbox-icon">
 						{% load static %}
 						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
+						{% if 'user_id' not in request.session %}
+						<span>Please Log In</span>
+						{% else %}
 						<span>{{ user.alias }}</span>
+						{% endif %}
 					</svg>
 				</div>
 				<div class="header__userbox-box">
-					<form action="" method="POST">
+					{% if 'user_id' not in request.session %}
 						<svg class="header__userbox-action">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
-							<span>sign in</span>
+							<a href="" class="logout"><span id="sign_in_box">Sign In</span></a>
 						</svg>
-					</form>
+					{% else %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
+							<a href="{% url 'logout' %}" class="logout"><span>Sign Out</span></a>
+						</svg>
+					{% endif %}
 				</div>
+
 			</div>
 
 		</header>

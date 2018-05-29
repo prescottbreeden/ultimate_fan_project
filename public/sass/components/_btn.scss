@@ -9,6 +9,13 @@
     border: none;
     outline: none;
 
+    &__logout {
+        background-color: transparent;
+        outline: none;
+        border: none;
+        color: var(--color-grey-light);
+    }
+
     &__close {
         padding: 2rem 2rem;
         outline: none;
@@ -29,6 +36,9 @@
     &__info {
         background-color: var(--color-primary-light);
         box-shadow: 0 1rem 2rem rgba(0,0,0,.5);
+        width: 30%;
+        margin: 0 auto;
+ 
     }
 
     &__form {
