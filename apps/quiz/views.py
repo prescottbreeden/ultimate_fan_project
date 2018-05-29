@@ -14,7 +14,6 @@ def quiz(request):
 	return render(request, 'quiz/quiz.html', context)
 
 def create_quiz(request, id):
-	# request.session['answer_value'] = ''
 	if 'user_id' not in request.session:
 		return redirect('/')
 	request.session['cat_id'] = id
@@ -62,6 +61,8 @@ def quiz_stats(request):
 		return redirect('/')
 	userlist = User.objects.all()
 	boardlist = []
+
+	# this is where the divide zero bug is happeneing
 	for user in userlist:
 		boardstats = [user.alias, 
 			len(Quiz.objects.filter(user = user, score= '1')),

@@ -1,0 +1,12 @@
+Things n stuff:
+
+- a links need to work when you click on the box they're in, not just the text
+    .. applies to nav and quiz selection
+
+- divide by zero error hard to replicate
+
+- footer is ugly as sin
+    .. very least needs to live at the bottom of the page but not cover main content if viewport height is decreased
+
+- typogrpahy structure is very wet and random
+    .. overhaul where font styles, sizes and weights are being set for consistency
