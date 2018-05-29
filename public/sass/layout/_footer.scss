@@ -1,0 +1,27 @@
+.footer {
+    padding: 2rem;
+    margin-top: 6rem;
+    width: 100%;
+    min-height: 13rem;
+    background-color: var(--color-grey-dark-3);
+
+    &__link {
+        &:link,
+        &:visited {
+            text-decoration: none;
+            color: var(--color-grey-light);
+
+            &:hover {
+                color: var(--color-green);
+            }
+        }
+    }
+
+    &__info p {
+        font-family: 'Source Sans Pro', sans-serif;
+        font-weight: 200;
+        letter-spacing: 1px;
+        text-align: center;
+        font-size: 2rem;
+    }
+}

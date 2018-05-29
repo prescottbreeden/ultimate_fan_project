@@ -1,0 +1,45 @@
+.nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    font-size: 2rem;
+    text-align: center;
+    
+    &__box {
+        flex: 1 0 25%;
+        perspective: 100rem;
+    }
+
+    &__item {
+        background-color: var(--color-primary);
+        padding: 2rem 4rem;
+        text-transform: uppercase;
+        cursor: pointer;
+        height: 100%;
+
+        &:hover {
+            background-color: var(--color-primary-light);
+            color: black;
+        }
+        &:hover + .nav__details {
+            transform: rotateX(0);
+            opacity: 1;
+        }
+    }
+
+    &__details {
+        transform-origin: top;
+        transform: rotateX(-90deg);
+        opacity: 0;
+        background-color: var(--color-primary-light);
+        transition: all .3s;
+        color: #fff;
+        border-bottom-left-radius: .5rem;
+        border-bottom-right-radius: .5rem;
+    }
+
+    &__item > * {
+       text-decoration: none;
+       color: #fff;
+   }
+}
