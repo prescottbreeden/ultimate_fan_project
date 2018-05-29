@@ -1,0 +1,7 @@
+/* 
+
+due to djangos modularization - tactic for this project is to have all imports go to appropriate pages file and have scripts compile from there to the appropriate pages of the application
+
+e.g. login.scss imports all necessary login-related code and then outputs into app/login/static/login/styles.min.css
+
+*/
