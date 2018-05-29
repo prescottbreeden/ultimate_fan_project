@@ -1,0 +1,15 @@
+//quiz.html
+
+//base
+@import '../base/_base';
+@import '../base/_mixins';
+@import '../base/_typography';
+@import '../base/_utilities';
+
+//layout
+@import '../layout/_footer';
+@import '../layout/_header';
+@import '../layout/_navigation';
+
+//components
+@import '../components/_btn';
