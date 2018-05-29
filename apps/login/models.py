@@ -33,8 +33,8 @@ class User_Manager(models.Manager):
 		# password field validation
 		if postData['password'] != postData['cpassword']:
 			result['errors']['password'] = 'Passwords do not match'
-		if len(postData['password']) < 8:
-			result['errors']['password'] = 'Passwords must be at least 8 characters long.' 
+		if len(postData['password']) < 6 or len(postData['password']) > 12:
+			result['errors']['password'] = 'Passwords must be between 6 and 12 characters.' 
 
 		if len(result['errors']):
 			return result
@@ -61,15 +61,18 @@ class User_Manager(models.Manager):
 
 		# email validation
 		existing = User.objects.filter(email = postData['email'])
+		if not existing:
+			existing = User.objects.filter(alias = postData['email'])
 		if existing:
 			user_password = postData['password'].encode()
-			# this is magic....
+			# as of 2018 bcrypt with python 3 in django causes hashes to be saved in DB as: b'hash'
+			# below code is to slice off the b and the quotes before encoding it for verification
 			existing_password = existing[0].password[2: len(existing[0].password) - 1]
 			existing_password = existing_password.encode()
 			if not bcrypt.checkpw(user_password, existing_password):
-				result['errors']['password'] = 'Password doesn\'t match'
+				result['errors']['password'] = 'Incorrect Password'
 		else:
-			result['errors']['password'] = 'Email not found'
+			result['errors']['password'] = 'Alias or Email Not Found'
 
 		if len(result['errors']):
 			return result
@@ -80,8 +83,6 @@ class User_Manager(models.Manager):
 
 # define super_user
 class User(models.Model):
-	first_name = models.CharField(max_length=255)
-	last_name = models.CharField(max_length=255)
 	alias = models.CharField(max_length=255)
 	email = models.CharField(max_length=255)
 	password = models.CharField(max_length=255)

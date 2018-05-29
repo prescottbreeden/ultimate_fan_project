@@ -228,6 +228,16 @@ body {
     transform: translateY(2px);
     box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.5); }
 
+.errors__list {
+  bottom: 0;
+  width: 100%;
+  list-style: none;
+  text-align: center; }
+
+.errors__message {
+  color: orangered;
+  letter-spacing: 1px; }
+
 .form {
   padding: 3rem; }
   .form__group:not(:last-child) {
@@ -274,7 +284,8 @@ body {
   position: relative; }
   .registration__container {
     width: 100%;
-    display: inline-block; }
+    display: inline-block;
+    position: relative; }
 
 .welcome {
   position: absolute;
@@ -286,7 +297,8 @@ body {
   width: 100%;
   padding: 3rem;
   display: flex;
-  backface-visibility: hidden; }
+  backface-visibility: hidden;
+  transition-duration: .2s; }
   .welcome__info {
     display: flex;
     flex-direction: column;
@@ -300,3 +312,6 @@ body {
     font-size: 2rem;
     font-weight: 200;
     letter-spacing: 1px; }
+
+.hide {
+  transform: translateX(-3000px) !important; }

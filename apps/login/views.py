@@ -8,6 +8,8 @@ from operator import itemgetter
 
 # landing page
 def index(request):
+	if 'hero' not in request.session:
+		request.session['hero'] = 'show'
 	if 'user_id' not in request.session:
 		request.session['status'] = 'guest'
 		return render(request, 'login/login.html')
@@ -21,6 +23,7 @@ def register(request):
 	if result['status'] != True:
 		for error in result['errors']:
 			messages.error(request, result['errors'][error])
+			request.session['hero'] = 'hide'
 		return redirect('/')
 	else:
 		request.session['user_id'] = result['user_id']
@@ -32,6 +35,7 @@ def login(request):
 	if result['status'] != True:
 		for error in result['errors']:
 			messages.error(request, result['errors'][error])
+			request.session['hero'] = 'hide'
 		return redirect('/')
 	else:
 		request.session['user_id'] = result['user_id']
@@ -52,7 +56,6 @@ def credits(request):
 
 def bar_data(request):
 	return Quiz.objects.bar_data(request.session['user_id'])
-
-
+	
 
 #

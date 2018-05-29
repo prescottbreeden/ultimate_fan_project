@@ -1,0 +1,14 @@
+.errors {
+
+    &__list {
+        bottom: 0;
+        width: 100%;
+        list-style: none;
+        text-align: center; 
+    }
+
+    &__message {
+        color: orangered;
+        letter-spacing: 1px;
+    }
+}

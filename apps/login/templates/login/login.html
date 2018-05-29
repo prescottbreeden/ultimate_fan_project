@@ -111,7 +111,7 @@
 							autocomplete="email"
 							required
 							class="form__input"
-							type="text" />
+							type="email" />
 						<label 
 							for="email"
 							class="form__label">
@@ -203,9 +203,18 @@
 					<button class="btn btn__form">Login &rarr;</button>
 				</form>
 				<button class="btn__close" id="close_forms">&times;</button>
+				<div class="errors">
+					{% if messages %}
+						<ul class="errors__list">
+							{% for message in messages %}
+								<li class="errors__message">{{ message }}</li>
+							{% endfor %}
+						</ul>
+					{% endif %}
+				</div>
 			</div>
 
-			<div class="welcome" id="welcome_hero">
+			<div class="welcome {{ request.session.hero }}" id="welcome_hero">
 				<div class="welcome__info">
 					<div class="primary-heading u-center-text">
 						<h2>Welcome to Ultimate Fan!</h2>

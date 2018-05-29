@@ -16,6 +16,7 @@ $(document).ready(function() {
 
     $(document).on('click', '#close_forms', function() {
         $('.btn__form').removeClass('u-shadow');
+        $('#welcome_hero').removeClass('hide');
         $('#welcome_hero').stop().animate({left: +0 }, 'slow');
     })
 
