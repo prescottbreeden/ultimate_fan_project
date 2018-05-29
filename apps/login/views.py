@@ -35,7 +35,7 @@ def login(request):
 		return redirect('/')
 	else:
 		request.session['user_id'] = result['user_id']
-		return redirect('/')
+		return redirect('/quiz')
 
 # clear request.session data
 def logout(request):
