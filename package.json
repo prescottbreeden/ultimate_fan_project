@@ -5,11 +5,17 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "build:css": "npm-run-all compile:sass-login prefix:css-login compress:css-login compile:sass-quiz prefix:css-quiz compress:css-quiz",
+
     "watch:sass-login": "node-sass public/sass/pages/login.scss apps/login/static/login/styles.css -w",
-    "compile:sass-login": "node-sass public/sass/pages/login.scss apps/login/static/login/styles.css",
+    "compile:sass-login": "node-sass public/sass/pages/login.scss public/styles/login.css",
+    "prefix:css-login": "postcss --use autoprefixer -b 'last 10 versions' public/styles/login.css -o public/styles/login.prefix.css",
+    "compress:css-login": "node-sass public/styles/login.prefix.css apps/login/static/login/styles.min.css --output-style compressed",
 
     "watch:sass-quiz": "node-sass public/sass/pages/quiz.scss apps/quiz/static/quiz/styles.css -w",
-    "compile:sass-quiz": "node-sass public/sass/pages/quiz.scss apps/quiz/static/quiz/styles.css",
+    "compile:sass-quiz": "node-sass public/sass/pages/quiz.scss public/styles/quiz.css",
+    "prefix:css-quiz": "postcss --use autoprefixer -b 'last 10 versions' public/styles/quiz.css -o public/styles/quiz.prefix.css",
+    "compress:css-quiz": "node-sass public/styles/quiz.prefix.css apps/quiz/static/quiz/styles.min.css --output-style compressed",
 
     "watch:sass-account": "node-sass public/sass/pages/quiz.scss apps/quiz/static/quiz/styles.css -w",
     "compile:sass-account": "node-sass public/sass/pages/quiz.scss apps/quiz/static/quiz/styles.css"
