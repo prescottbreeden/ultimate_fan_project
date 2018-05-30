@@ -8,14 +8,14 @@ $(document).ready(function(){
 
     $('button').on('click', function(){
         if ($(this).val() == '1'){
-            $('.response_answer').html(
-                '<h1 class="correct">CORRECT!!</h1>'
+            $('.question__result').html(
+                '<h1 class="question__result--correct">CORRECT!!</h1>'
                 );
             $('#quiz').addClass('slide_off');
         }
         else {
-            $('.response_answer').html(
-                '<h1 class="incorrect">Incorrect...</h1>'
+            $('.question__result').html(
+                '<h1 class="question__result--incorrect">Incorrect...</h1>'
                 );
             $('#quiz').addClass('slide_off');
 

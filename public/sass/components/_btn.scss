@@ -58,3 +58,27 @@
     }
 }
 
+.btn-answer {
+    border-radius: 4px;
+    padding: 3rem 3rem;    
+    font-size: 2.5rem;
+    font-weight: 200;
+    letter-spacing: 1px;
+    background-color: var(--color-primary);
+    color: var(--color-white);
+    width: 90%;
+    height: 100%;
+    border: none;
+    box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
+    transition: all .2s;
+    font-family: 'Josefin Slab', sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+
+    &:hover{
+        background-color: green;
+    }
+
+}
+

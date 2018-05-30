@@ -78,22 +78,35 @@
 			</div>
 		</nav>
 
-		<div id='quiz' class="slide_on">
-			<h3>{{ questions.trivia }}</h3>
-			<div class="answers">
-				{% for answers in questions.answer_list %}
-					<form action="{% url 'submit_quiz' answers.value %}" method="POST">
-				{% csrf_token %}
-					<p class='answer div_value{{answers.value}}'> 
-					<button type="submit" value="{{ answers.value }}">
-				{{ answers.answer.athlete.name }}
-					</button></p></form>
-				{% endfor %}
+		<section class="question">	
+			<div class="question__container" id='quiz'>
+				<div class="question__text">
+					<h3>{{ questions.trivia }}</h3>
+				</div>
+				<div class="question__timer"></div>
+				<div class="question__result"></div>
 			</div>
-			<br>
-			<div class="timer"></div>
-			<div class="response_answer"></div>
-		</div>
+				<div class="question__answer-list">
+					{% for answers in questions.answer_list %}
+					<div class="question__answer-list--answer">
+						<form action="{% url 'submit_quiz' answers.value %}" method="POST">
+							{% csrf_token %}
+							<button type="submit" value="{{ answers.value }}" class="btn-answer">
+								<p class='div_value{{answers.value}}'> 
+									{{ answers.answer.athlete.name }}
+								</p>
+								<svg class="quizzes__categories--svg">
+									{% load static %}
+									<use xlink:href="../static/quiz/sprite.svg#icon-chevron-thin-right"></use>
+								</svg>
+							</button>
+						</form>
+					</div>
+					{% endfor %}
+				</div>
+
+		</section>
+
 		<footer class="footer">
 			<div class="footer__info">
 				<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>

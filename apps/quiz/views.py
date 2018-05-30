@@ -60,25 +60,31 @@ def quiz_stats(request):
 	if 'user_id' not in request.session:
 		return redirect('/')
 	userlist = User.objects.all()
-	boardlist = []
+	leader_boardlist = []
 
-	# this is where the divide zero bug is happeneing
+	# this is where the divide zero bug is happening
+	# my gut thinks this is because session is somehow getting dropped - more testing...
+	# if Quiz.objects.filter(user = user) is null: or something...
+
 	for user in userlist:
-		boardstats = [user.alias, 
-			len(Quiz.objects.filter(user = user, score= '1')),
-			len(Quiz.objects.filter(user = user)), 
-			int(100*len(Quiz.objects.filter(user= user, score= '1')) / len(Quiz.objects.filter(user = user))) ]
-		boardlist.append(boardstats)
+		if len(Quiz.objects.filter(user = user)) == 0:
+			continue
+		else:
+			boardstats = [user.alias, 
+				len(Quiz.objects.filter(user = user, score= '1')),
+				len(Quiz.objects.filter(user = user)),
+				int(100*len(Quiz.objects.filter(user= user, score= '1')) / len(Quiz.objects.filter(user = user))) ]
+			leader_boardlist.append(boardstats)
 
-	boardlist.sort(key=lambda x: x[1])
-	boardlist = boardlist[::-1]
+	leader_boardlist.sort(key=lambda x: x[1])
+	leader_boardlist = leader_boardlist[::-1]
 	counter = 1
-	for user in boardlist:
+	for user in leader_boardlist:
 		user.append(counter)
 		counter += 1
 
 	context = {
-		'leaderboard': boardlist,
+		'leaderboard': leader_boardlist,
 		'user': User.objects.get(id=request.session['user_id']),
 		}
 

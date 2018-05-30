@@ -44,6 +44,8 @@ class User_Manager(models.Manager):
 			user_password = postData['password'] 
 			hashed = bcrypt.hashpw(user_password.encode(), bcrypt.gensalt())
 			new_user = User.objects.create(
+				first_name = '',
+				last_name = '',
 				alias = postData['alias'],
 				email = postData['email'],
 				password = hashed,
@@ -83,6 +85,8 @@ class User_Manager(models.Manager):
 
 # define super_user
 class User(models.Model):
+	first_name = models.CharField(max_length=255)
+	last_name = models.CharField(max_length=255)
 	alias = models.CharField(max_length=255)
 	email = models.CharField(max_length=255)
 	password = models.CharField(max_length=255)

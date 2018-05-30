@@ -27,7 +27,7 @@ def register(request):
 		return redirect('/')
 	else:
 		request.session['user_id'] = result['user_id']
-		return redirect('/')
+		return redirect('/quiz')
 
 # log in existing user
 def login(request):
