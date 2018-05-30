@@ -1,60 +1,105 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-	<link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
-	<title>Quiz O Matic!</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Ultimate Fan</title>
+	
+	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,400,700|Source+Sans+Pro:300,400,700" rel="stylesheet">
 	{% load static %}
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<link rel="shortcut icon" type="image/png" href="{% static 'login/favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'quiz/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous">
+	</script>
 	<script type='text/javascript' src="{% static 'quiz/take_quiz.js' %}"></script>
-	<link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" media="screen" title="no title"  charset="utf-8">
 </head>
 <body>
-	<div class="header">
-	<h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
-		<div class="login_logout">
-			<p>{{ user.alias }}</p>
-			<form action="{% url 'logout' %}" method="POST">
-			{% csrf_token %}
-			<input type="submit" value="Log Out">
-			</form>
-		</div>
-	</div>
 	<div class="container">
-		<div class="box">
-			<div class="selectors"><a href="/">Home</a></div>
-			<div class="explain">Return to the home page</div>
+		<header class="header">
+			<div class="header__logo-box">
+				<div class="logo__background-bottom">
+					<div class="logo__background-middle">
+						<div class="logo__background-top">
+							<div class="logo__text">
+								<h1>Ultimate Fan</h1>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="header__userbox">
+				<div class="header__userbox-box">
+					<svg class="header__userbox-icon">
+						{% load static %}
+						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
+						{% if 'user_id' not in request.session %}
+						<span>Please Log In</span>
+						{% else %}
+						<span>{{ user.alias }}</span>
+						{% endif %}
+					</svg>
+				</div>
+				<div class="header__userbox-box">
+					{% if 'user_id' not in request.session %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
+							<a href="" class="logout"><span id="sign_in_box">Sign In</span></a>
+						</svg>
+					{% else %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
+							<a href="{% url 'logout' %}" class="logout"><span>Sign Out</span></a>
+						</svg>
+					{% endif %}
+				</div>
+
+			</div>
+
+		</header>
+		<nav class="nav">
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+				<div class="nav__details">Test your knowledge!</div>
+			</div>
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
+				<div class="nav__details">How boss are you?</div>
+			</div>
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'account_info' %}">Account</a></div>
+				<div class="nav__details">Your Stuffs!</div>
+			</div>
+		</nav>
+
+		<div id='quiz' class="slide_on">
+			<h3>{{ questions.trivia }}</h3>
+			<div class="answers">
+				{% for answers in questions.answer_list %}
+					<form action="{% url 'submit_quiz' answers.value %}" method="POST">
+				{% csrf_token %}
+					<p class='answer div_value{{answers.value}}'> 
+					<button type="submit" value="{{ answers.value }}">
+				{{ answers.answer.athlete.name }}
+					</button></p></form>
+				{% endfor %}
+			</div>
+			<br>
+			<div class="timer"></div>
+			<div class="response_answer"></div>
 		</div>
-		<div class="box">
-			<div class="selectors"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
-			<div class="explain">Test your knowledge!</div>
-		</div>
-		<div class="box">
-			<div class="selectors"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
-			<div class="explain">How boss are you?</div>
-		</div>
-		<div class="box">
-			<div class="selectors"><a href="{% url 'account_info' %}">Your Account</a></div>
-			<div class="explain">Stuffs!</div>
-		</div>
+		<footer class="footer">
+			<div class="footer__info">
+				<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
+			</div>
+		</footer>
 	</div>
-	<div id='quiz' class="slide_on">
-		<h3>{{ questions.trivia }}</h3>
-		<div class="answers">
-			{% for answers in questions.answer_list %}
-			<form action="{% url 'submit_quiz' answers.value %}" method="POST">
-			{% csrf_token %}
-			<p class='answer div_value{{answers.value}}'> 
-			<button type="submit" value="{{ answers.value }}">
-			{{ answers.answer.athlete.name }}
-			</button></p></form>
-			{% endfor %}
-		</div>
-		<br>
-		<div class="timer"></div>
-		<div class="response_answer"></div>
-	</div>
-	<footer class="hack_footer">
-		<p>Copyright 2018 - All rights reserved - (ง'̀-'́)ง</p>
-	</footer>
+<script> </script>
 </body>
 </html>

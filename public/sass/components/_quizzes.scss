@@ -15,7 +15,6 @@
             display: flex;
             justify-content: space-between;
             transition: all .2s;
-            // padding: 1rem 2rem;
 
             &:hover {
                 margin-left: 1rem;
@@ -55,8 +54,6 @@
                 background-color: green;
                 cursor: pointer;
             }
-
-
         }
 
         &--link:hover &--item {
