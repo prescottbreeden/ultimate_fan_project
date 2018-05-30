@@ -73,25 +73,26 @@
 			</div>
 		</nav>
 		<div class="quizzes">
-			<div class="heading-secondary u-center-text">
+			<div class="heading-secondary u-center-text u-margin-bottom">
 				<h2>Select a Category to Begin Quiz:</h2>
 			</div>
 			<div class="quizzes__categories">
-			{% for category in categories %}
-				<div class="quizzes__categories--item">
-					<a href="{% url 'create_quiz' category.id %}" class='quizzes__categories--link'>{{ category.activity_type }}</a>	
-					<svg class="quizzes__categories--svg">
-						{% load static %}
-						<use xlink:href="../static/quiz/sprite.svg#icon-chevron-thin-right"></use>
-					</svg>
-				</div>
-			{% endfor %}
+				{% for category in categories %}
+					<a href="{% url 'create_quiz' category.id %}" class='quizzes__categories--link'>
+						<div class="quizzes__categories--item">
+							{{ category.activity_type }}	
+							<svg class="quizzes__categories--svg">
+								{% load static %}
+								<use xlink:href="../static/quiz/sprite.svg#icon-chevron-thin-right"></use>
+							</svg>
+						</div>
+					</a>
+				{% endfor %}
 			</div>
+		</div>
 		</div>
 		<footer class="footer">
 			<div class="footer__info">
-				<p>Built With ~ Python, Django, SQLite, Bcrypt, Beautiful Soup, Chart.js, CSS3, HTML5, SASS, jQuery, AWS</p>
-				<p>All data for the trivia questions were scraped using Beautiful Soup.</p>
 				<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
 			</div>
 		</footer>

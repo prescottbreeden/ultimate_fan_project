@@ -1,8 +1,11 @@
 .footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
     padding: 2rem;
     margin-top: 6rem;
     width: 100%;
-    min-height: 13rem;
+    // min-height: 13rem;
     background-color: var(--color-grey-dark-3);
 
     &__link {

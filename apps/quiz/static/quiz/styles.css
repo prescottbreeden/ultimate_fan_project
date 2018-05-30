@@ -11,11 +11,9 @@
   --color-grey-light-1: #f7f7f7;
   --color-grey-light: #eee;
   --color-grey-dark: #777;
-  --color-grey-dark-2: #999;
   --color-grey-dark-3: #333;
   --color-white: #f2f2f2;
   --color-white-2: #ddd;
-  --color-grey-dark: #333;
   --color-black: #000;
   --default-border-radius: 3px; }
 
@@ -33,15 +31,15 @@ html {
   font-size: 62.5%; }
 
 body {
-  background-image: linear-gradient(to right bottom, var(--color-primary-light), var(--color-primary));
+  background-color: var(--color-blue-grey);
   background-size: cover;
   background-repeat: no-repeat;
+  margin-bottom: 6rem;
   min-height: 100vh; }
 
 .container {
   border-radius: 3px;
-  background-color: var(--color-blue-grey);
-  min-height: 100vh; }
+  background-color: var(--color-blue-grey); }
 
 body {
   font-family: 'Josefin Slab', sans-serif;
@@ -50,26 +48,32 @@ body {
   color: var(--color-grey-light-1); }
 
 .heading-primary {
-  font-family: 'Josefin Slab', sans-serif; }
+  font-family: 'Josefin Slab', sans-serif;
+  font-size: 2.1rem; }
 
 .heading-secondary {
   font-family: 'Source Sans Pro', sans-serif;
   font-size: 2rem;
-  font-weight: 400;
+  font-weight: 200;
   color: var(--color-grey-light); }
 
 .u-center-text {
-  text-align: center !important; }
+  text-align: center; }
 
 .u-shadow {
-  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5) !important;
-  transition: all .2s !important; }
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.5);
+  transition: all .2s; }
+
+.u-margin-bottom {
+  margin-bottom: 2rem; }
 
 .footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
   padding: 2rem;
   margin-top: 6rem;
   width: 100%;
-  min-height: 13rem;
   background-color: var(--color-grey-dark-3); }
   .footer__link:link, .footer__link:visited {
     text-decoration: none;
@@ -85,7 +89,7 @@ body {
 
 .header {
   font-size: 2rem;
-  background-color: var(--color-grey-dark);
+  background-color: var(--color-grey-dark-3);
   color: var(--color-white);
   display: flex;
   justify-content: space-between;
@@ -185,7 +189,7 @@ body {
   border-radius: 200px;
   background-color: var(--color-primary);
   font-family: inherit;
-  font-size: 2.5rem;
+  font-size: 1.7rem;
   font-weight: 300;
   color: var(--color-grey-light);
   border: none;
@@ -225,42 +229,45 @@ body {
 
 .quizzes {
   width: 80%;
-  margin: 0 auto;
-  margin-top: 2rem; }
+  margin: 0 auto; }
   .quizzes__categories {
-    max-height: 60rem;
+    max-height: 40rem;
     display: flex;
     flex-direction: column;
     flex-wrap: wrap;
     align-items: center; }
     .quizzes__categories--item {
-      width: 40%;
-      margin: 1rem 2rem;
-      padding: 2rem 3rem;
-      background-color: var(--color-primary);
-      text-align: center;
-      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+      width: 100%;
+      border-radius: inherit;
       display: flex;
-      align-items: baseline;
       justify-content: space-between;
-      transition: all .2s;
-      border-radius: 5px; }
-      .quizzes__categories--item:not(:last-child) {
-        margin-bottom: 2rem; }
+      transition: all .2s; }
       .quizzes__categories--item:hover {
-        background-color: green;
-        cursor: pointer; }
-      .quizzes__categories--item:hover > a {
         margin-left: 1rem; }
-    .quizzes__categories--item > * {
+    .quizzes__categories--link > * {
       margin-top: .6rem; }
     .quizzes__categories--svg {
       height: 2rem;
       width: 2rem;
       fill: var(--color-grey-light); }
     .quizzes__categories--link {
-      text-transform: uppercase;
+      width: 40%;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      background-color: var(--color-primary);
+      padding: 1rem 2rem;
+      box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+      font-size: 2rem;
       text-decoration: none;
+      text-transform: uppercase;
       color: var(--color-grey-light);
-      font-size: 2.5rem;
+      border-radius: 5px;
       transition: all .2s; }
+      .quizzes__categories--link:not(:last-child) {
+        margin-bottom: 2rem; }
+      .quizzes__categories--link:hover {
+        background-color: green;
+        cursor: pointer; }
+    .quizzes__categories--link:hover .quizzes__categories--item {
+      margin-left: 1.2rem; }
