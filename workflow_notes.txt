@@ -1,12 +1,15 @@
 Things n stuff:
 
 - a links need to work when you click on the box they're in, not just the text
-    .. applies to nav and quiz selection
+    .. applies to nav, quiz selection, sign-in/out, user
+    - update: quiz links fixed
 
 - divide by zero error hard to replicate
 
 - footer is ugly as sin
     .. very least needs to live at the bottom of the page but not cover main content if viewport height is decreased
+    - update: removed most the text and slimmed it down, could still be improved but a good start
 
 - typogrpahy structure is very wet and random
     .. overhaul where font styles, sizes and weights are being set for consistency
+    - update: most completed, removed most instances of font size pointlessly repeating
