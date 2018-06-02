@@ -18,6 +18,7 @@
 </head>
 <body>
 	<div class="container">
+
 		<header class="header">
 			<div class="header__logo-box">
 				<div class="logo__background-bottom">
@@ -58,21 +59,20 @@
 						</svg>
 					{% endif %}
 				</div>
-
 			</div>
-
 		</header>
+
 		<nav class="nav">
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+				<a href="{% url 'quiz_home' %}" class="nav__item">Quizzes</a>
 				<div class="nav__details">Test your knowledge!</div>
 			</div>
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
+				<a href="{% url 'quiz_stats' %}" class="nav__item">Quiz Stats</a>
 				<div class="nav__details">How boss are you?</div>
 			</div>
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'account_info' %}">Account</a></div>
+				<a href="{% url 'account_info' %}" class="nav__item">Account</a>
 				<div class="nav__details">Your Stuffs!</div>
 			</div>
 		</nav>
@@ -83,10 +83,10 @@
 			<canvas id="bar_data" width="400" height="400"></canvas>
 		</div>
 	</div>
-		<footer class="footer">
-			<div class="footer__info">
-				<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
-			</div>
-		</footer>
+	<footer class="footer">
+		<div class="footer__info">
+			<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
+		</div>
+	</footer>
 </body>
 </html>

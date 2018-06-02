@@ -20,7 +20,8 @@
     <script type="text/javascript" src="{% static 'quiz/quiz_chart_test.js' %}"></script>
 </head>
 <body>
-	<iv class="container">
+	<div class="container">
+
 		<header class="header">
 			<div class="header__logo-box">
 				<div class="logo__background-bottom">
@@ -61,24 +62,24 @@
 						</svg>
 					{% endif %}
 				</div>
-
 			</div>
-
 		</header>
+
 		<nav class="nav">
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+				<a href="{% url 'quiz_home' %}" class="nav__item">Quizzes</a>
 				<div class="nav__details">Test your knowledge!</div>
 			</div>
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
+				<a href="{% url 'quiz_stats' %}" class="nav__item">Quiz Stats</a>
 				<div class="nav__details">How boss are you?</div>
 			</div>
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'account_info' %}">Account</a></div>
+				<a href="{% url 'account_info' %}" class="nav__item">Account</a>
 				<div class="nav__details">Your Stuffs!</div>
 			</div>
 		</nav>
+
 		<div class="quiz-stats">
 			<div class="quiz-stats__last-quiz">
 				<h2 class="quiz-stats__header">Last quiz for {{user.alias}}</h2>
@@ -89,6 +90,7 @@
 				<canvas class="quiz-stats__canvas" id="myChart"></canvas>
 			</div>
 		</div>
+
         <section class="leaderboard">
         	<h1>Leaderboards</h1>
             <div class="leaderboard__container">
@@ -110,8 +112,8 @@
                 {% endfor %}
             </div>
 
-        </iv>
-    </iv>
+        </section>
+    </div>
     <footer class="footer">
         <div class="footer__info">
             <p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>

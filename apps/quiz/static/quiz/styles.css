@@ -194,16 +194,19 @@ body {
   .nav__box {
     flex: 1 0 25%;
     perspective: 100rem; }
-  .nav__item {
+  .nav__item, .nav__item:link, .nav__item:visited {
+    display: block;
     background-color: var(--color-primary);
     padding: 2rem 4rem;
+    text-decoration: none;
     text-transform: uppercase;
+    color: currentColor;
     cursor: pointer;
-    height: 100%; }
-    .nav__item:hover {
-      background-color: var(--color-primary-light);
-      color: black; }
-    .nav__item:hover + .nav__details {
+    height: 100%;
+    width: 100%; }
+    .nav__item:hover, .nav__item:link:hover, .nav__item:visited:hover {
+      background-color: var(--color-primary-light); }
+    .nav__item:hover + .nav__details, .nav__item:link:hover + .nav__details, .nav__item:visited:hover + .nav__details {
       transform: rotateX(0);
       opacity: 1; }
   .nav__details {
