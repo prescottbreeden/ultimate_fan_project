@@ -55,7 +55,7 @@ body {
   background-color: var(--color-blue-grey);
   background-size: cover;
   background-repeat: no-repeat;
-  margin-bottom: 6rem;
+  margin-bottom: 12rem;
   min-height: 100vh; }
 
 .container {
@@ -134,6 +134,7 @@ body {
     margin-right: 3rem;
     display: flex;
     justify-content: flex-end;
+    align-items: center;
     color: var(--color-white); }
     .header__userbox-box {
       display: flex;
@@ -160,8 +161,8 @@ body {
       height: 2.25rem;
       width: 2.25rem;
       fill: currentColor; }
-      .header__userbox-action--logout:link, .header__userbox-action--logout:active {
-        text-decoration: none !important;
+      .header__userbox-action--logout:link, .header__userbox-action--logout:visited {
+        text-decoration: none;
         color: var(--color-white); }
 
 .logo__background-bottom {

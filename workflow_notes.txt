@@ -1,7 +1,0 @@
-Things n stuff:
-
-- a links need to work when you click on the box they're in, not just the text
-    .. applies to nav, quiz selection, sign-in/out, user
-    - update: quiz links fixed
-
-- please log in userbox click does same thing as signin

@@ -49,13 +49,13 @@
 						<svg class="header__userbox-action">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
-							<a href="" class="logout"><span id="sign_in_box">Sign In</span></a>
+							<span id="sign_in_box">Sign In</span>
 						</svg>
 					{% else %}
 						<svg class="header__userbox-action">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
-							<span><a href="{% url 'logout' %}" class="logout" id="logout">Sign Out</a></span>
+							<span class="header__userbox-action--logout" id="logout"> Sign Out </span>
 						</svg>
 					{% endif %}
 				</div>

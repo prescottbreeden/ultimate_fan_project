@@ -38,7 +38,7 @@
 						{% load static %}
 						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
 						{% if 'user_id' not in request.session %}
-						<span>Please Log In</span>
+						<span id="sign_in_box">Welcome</span>
 						{% else %}
 						<span>{{ user.alias }}</span>
 						{% endif %}

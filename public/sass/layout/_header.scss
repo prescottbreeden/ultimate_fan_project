@@ -17,6 +17,7 @@
         margin-right: 3rem;
         display: flex;
         justify-content: flex-end;
+        align-items: center;
         color: var(--color-white);
 
         &-box {
@@ -51,10 +52,9 @@
             width: 2.25rem;
             fill: currentColor;
 
-
             &--logout:link,
-            &--logout:active {
-                text-decoration: none !important;
+            &--logout:visited {
+                text-decoration: none;
                 color: var(--color-white);
             }
         }
