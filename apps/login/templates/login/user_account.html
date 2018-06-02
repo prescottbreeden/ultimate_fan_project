@@ -64,26 +64,31 @@
 			</header>
 
 			<nav class="nav">
-				<div class="nav__box">
-					<a href="{% url 'quiz_home' %}" class="nav__item">Quizzes</a>
-					<div class="nav__details">Test your knowledge!</div>
-				</div>
-				<div class="nav__box">
-					<a href="{% url 'quiz_stats' %}" class="nav__item">Quiz Stats</a>
-					<div class="nav__details">How boss are you?</div>
-				</div>
-				<div class="nav__box">
-					<a href="{% url 'account_info' %}" class="nav__item">Account</a>
-					<div class="nav__details">Your Stuffs!</div>
-				</div>
-			</nav>
+					<div class="nav__box">
+						<a href="{% url 'quiz_home' %}" class="nav__item">Quiz</a>
+						<div class="nav__details">Test your knowledge!</div>
+					</div>
+					<div class="nav__box">
+						<a href="{% url 'quiz_stats' %}" class="nav__item">Stats</a>
+						<div class="nav__details">Quiz stats and leaderboard</div>
+					</div>
+					<div class="nav__box">
+						<a href="{% url 'account_info' %}" class="nav__item">History</a>
+						<div class="nav__details">Your quiz history</div>
+					</div>
+				</nav>
 
-			<h2 class='account_alias'>{{user.alias}}</h2>
-			<div class="content">
-				<div class="chart">
-					<canvas id="bar_data" width="400" height="400"></canvas>
+			<section class="history">
+				<h2 class='history__username'>{{user.alias}}</h2>
+				<div class="history__description">
+					<p>Number of trivia questions answered right/wrong for {{ user.alias }} across all categories.</p>
 				</div>
-			</div>
+				<div class="history__background">
+					<div class="history__chart">
+						<canvas class="history__chart--canvas" id="bar_data"></canvas>
+					</div>
+				</div>
+			</section>
 
 			<footer class="footer">
 				<div class="footer__info">

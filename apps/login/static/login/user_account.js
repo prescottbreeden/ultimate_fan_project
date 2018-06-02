@@ -12,7 +12,7 @@ $(document).ready(function(){
             options: {
                 legend: {
                     labels: {
-                        fontColor: 'white'
+                        fontColor: 'black'
                         }
                 },
                 tooltips: {
@@ -48,9 +48,9 @@ $(document).ready(function(){
     });
 
     $("#logout").on('click', function() {
-        clearTimeout(timer);
         $.ajax({
             url: "/logout",
           });
+        location.reload();
     })
 });

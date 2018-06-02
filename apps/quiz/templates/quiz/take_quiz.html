@@ -65,16 +65,16 @@
 		
 		<nav class="nav">
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+				<a href="{% url 'quiz_home' %}" class="nav__item">Quiz</a>
 				<div class="nav__details">Test your knowledge!</div>
 			</div>
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
-				<div class="nav__details">How boss are you?</div>
+				<a href="{% url 'quiz_stats' %}" class="nav__item">Stats</a>
+				<div class="nav__details">Quiz stats and leaderboard</div>
 			</div>
 			<div class="nav__box">
-				<div class="nav__item"><a href="{% url 'account_info' %}">Account</a></div>
-				<div class="nav__details">Your Stuffs!</div>
+				<a href="{% url 'account_info' %}" class="nav__item">History</a>
+				<div class="nav__details">Your quiz history</div>
 			</div>
 		</nav>
 

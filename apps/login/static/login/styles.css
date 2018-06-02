@@ -28,13 +28,12 @@
   --color-green: #55c57a;
   --color-green-light: #7ed56f;
   --color-green-dark: #28b485;
-  --color-grey-light-1: #f7f7f7;
+  --color-grey-light-1: rgb(247, 247, 247);
   --color-grey-light: #eee;
+  --color-grey-light-2: #ddd;
   --color-grey-dark: #777;
   --color-grey-dark-3: #333;
   --color-white: #f2f2f2;
-  --color-white-1: #eee;
-  --color-white-2: #ddd;
   --color-black: #000;
   --default-border-radius: 3px; }
 
@@ -332,6 +331,39 @@ body {
     letter-spacing: .3rem;
     display: block;
     color: var(--color-grey-light); }
+
+.history__username {
+  font-size: 3em;
+  letter-spacing: 1px;
+  text-align: center; }
+
+.history__description {
+  font-size: 2em;
+  letter-spacing: 1px;
+  text-align: center;
+  width: 70%;
+  margin: 0 auto; }
+
+.history__background {
+  position: relative;
+  margin: 3rem auto;
+  width: 80%;
+  height: 60rem;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+  border-radius: 2px;
+  background-image: linear-gradient(45deg, var(--color-primary-light) 0%, var(--color-primary-light) 3%, var(--color-primary) 3%, var(--color-primary) 97%, var(--color-primary-light) 97%); }
+
+.history__chart {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 90%;
+  height: 90%;
+  padding: 4rem;
+  border-radius: 5px;
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.25);
+  background-color: var(--color-white); }
 
 .registration {
   width: 90%;
