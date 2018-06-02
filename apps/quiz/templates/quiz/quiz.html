@@ -13,7 +13,7 @@
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous">
 	</script>
-	<script src="{% static 'quiz/app.js' %}"></script>
+	<script src="{% static 'quiz/quiz.js' %}"></script>
 </head>
 <body>
 	<div class="container">
@@ -45,14 +45,14 @@
 						{% if 'user_id' not in request.session %}
 							<svg class="header__userbox-action">
 								{% load static %}
-								<use xlink:href="../static/quiz/sprite.svg#icon-enter"></use>
-								<span>Sign In</span>
+								<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
+								<a href="" class="logout"><span id="sign_in_box">Sign In</span></a>
 							</svg>
 						{% else %}
 							<svg class="header__userbox-action">
 								{% load static %}
-								<use xlink:href="../static/quiz/sprite.svg#icon-exit"></use>
-								<span id="sign_in_box">Sign Out</span>
+								<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
+								<span><a href="{% url 'logout' %}" class="logout" id="logout">Sign Out</a></span>
 							</svg>
 						{% endif %}
 					</div>

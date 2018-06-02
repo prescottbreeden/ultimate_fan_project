@@ -2,11 +2,13 @@ console.log('Power Overwhelming...')
 
 $(document).ready(function(){
 
-    setTimeout(function() {
+    timer = setTimeout(function() {
         $("button[value='0']").trigger('click')
+            console.log('timer ran out');
         }, 15000);
 
     $('button').on('click', function(){
+        clearTimeout(timer);
         if ($(this).val() == '1'){
             $('.question__result').html(
                 '<h1 class="question__result--correct">CORRECT!!</h1>'
@@ -18,19 +20,26 @@ $(document).ready(function(){
                 '<h1 class="question__result--incorrect">Incorrect...</h1>'
                 );
             $('#quiz').addClass('slide_off');
-
+            
             // flash correct answer
-            $("p.div_value1").addClass('right_answer');
+            $(".div_value1").parent().addClass('right_answer');
             setTimeout(function() {
-                $("p.div_value1").removeClass('right_answer')
+                $(".div_value1").parent().removeClass('right_answer')
                 }, 250);
             setTimeout(function() {
-                $("p.div_value1").addClass('right_answer')
+                $(".div_value1").parent().addClass('right_answer')
                 }, 500);
             setTimeout(function() {
-                $("p.div_value1").removeClass('right_answer')
+                $(".div_value1").parent().removeClass('right_answer')
                 }, 750);
         };
     });
+
+    $("#logout").on('click', function() {
+        clearTimeout(timer);
+        $.ajax({
+            url: "/logout",
+          });
+    })
 
 });

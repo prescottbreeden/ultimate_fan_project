@@ -1,14 +1,14 @@
-@keyframes slide_off {
-  0% {
-    transform: translateX(0px); }
-  100% {
-    transform: translateX(-1200px); } }
-
 @keyframes slide_on {
   0% {
-    transform: translateX(1200px); }
+    transform: translateX(120rem); }
   100% {
-    transform: translateX(0px); } }
+    transform: translateX(0rem); } }
+
+@keyframes slide_off {
+  0% {
+    transform: translateX(0rem); }
+  100% {
+    transform: translateX(-120rem); } }
 
 @keyframes timer {
   0% {
@@ -33,6 +33,7 @@
   --color-grey-dark: #777;
   --color-grey-dark-3: #333;
   --color-white: #f2f2f2;
+  --color-white-1: #eee;
   --color-white-2: #ddd;
   --color-black: #000;
   --default-border-radius: 3px; }
@@ -132,7 +133,8 @@ body {
     width: 40%;
     margin-right: 3rem;
     display: flex;
-    justify-content: flex-end; }
+    justify-content: flex-end;
+    color: var(--color-white); }
     .header__userbox-box {
       display: flex;
       flex-direction: row;
@@ -149,7 +151,7 @@ body {
       right: 0;
       height: 2.25rem;
       width: 2.25rem;
-      fill: var(--color-white); }
+      fill: currentColor; }
     .header__userbox-action {
       position: absolute;
       top: 1.95rem;
@@ -157,7 +159,10 @@ body {
       margin-left: 3rem;
       height: 2.25rem;
       width: 2.25rem;
-      fill: var(--color-white); }
+      fill: currentColor; }
+      .header__userbox-action--logout:link, .header__userbox-action--logout:active {
+        text-decoration: none !important;
+        color: var(--color-white); }
 
 .logo__background-bottom {
   padding: 0 1rem;
@@ -258,6 +263,28 @@ body {
   .btn:active {
     transform: translateY(2px);
     box-shadow: 0 0rem 1rem rgba(0, 0, 0, 0.5); }
+
+.btn-answer {
+  border-radius: 4px;
+  padding: 3rem 3rem;
+  font-size: 2.5rem;
+  font-weight: 200;
+  letter-spacing: 1px;
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  width: 90%;
+  height: 100%;
+  border: none;
+  box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
+  transition: all .2s;
+  font-family: 'Josefin Slab', sans-serif;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline; }
+  .btn-answer:hover {
+    background-color: green; }
+  .btn-answer:focus {
+    outline: none; }
 
 .errors__list {
   bottom: 0;

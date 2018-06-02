@@ -17,6 +17,7 @@
         margin-right: 3rem;
         display: flex;
         justify-content: flex-end;
+        color: var(--color-white);
 
         &-box {
             display: flex;
@@ -38,7 +39,7 @@
             right: 0;
             height: 2.25rem;
             width: 2.25rem;
-            fill: var(--color-white);
+            fill: currentColor;
         }
 
         &-action {
@@ -48,7 +49,14 @@
             margin-left: 3rem;
             height: 2.25rem;
             width: 2.25rem;
-            fill: var(--color-white);
+            fill: currentColor;
+
+
+            &--logout:link,
+            &--logout:active {
+                text-decoration: none !important;
+                color: var(--color-white);
+            }
         }
     }
 }
@@ -82,3 +90,4 @@
         font-weight: 300;
     }
 }
+

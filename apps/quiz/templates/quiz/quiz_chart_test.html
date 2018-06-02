@@ -1,81 +1,121 @@
+
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link href="https://fonts.googleapis.com/css?family=Michroma" rel="stylesheet">
-    <title>Quiz Stats</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<title>Ultimate Fan</title>
+    <link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,400,700|Source+Sans+Pro:300,400,700" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
-    {% load static %}
-    <link rel="stylesheet" href="{% static 'quiz/quiz.css' %}" media="screen" title="no title"  charset="utf-8">
+	{% load static %}
+	<link rel="shortcut icon" type="image/png" href="{% static 'login/favicon.ico' %}"/>
+	<link rel="stylesheet" href="{% static 'quiz/styles.css' %}" media="screen" title="no title"  charset="utf-8">
+	<script
+		src="https://code.jquery.com/jquery-3.3.1.js"
+		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+		crossorigin="anonymous">
+	</script>
     <script type="text/javascript" src="{% static 'quiz/quiz_chart_test.js' %}"></script>
 </head>
 <body>
-<div class="wrapper">
-        <div class="header">
-            <h1 class="landing_title">(ง'̀-'́)ง Ultimate Fan</h1>
-            <div class="login_logout">
-                <p>{{ user.alias }}</p>
-                <form action="{% url 'logout' %}" method="POST">
-                {% csrf_token %}
-                <input type="submit" value="Log Out">
-                </form>
-            </div>
-        </div>
-        <div class="container">
-            <div class="box">
-                <div class="selectors"><a href="/">Home</a></div>
-                <div class="explain">Return to the home page</div>
-            </div>
-            <div class="box">
-                <div class="selectors"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
-                <div class="explain">Test your knowledge!</div>
-            </div>
-            <div class="box">
-                <div class="selectors"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
-                <div class="explain">How boss are you?</div>
-            </div>
-            <div class="box">
-                <div class="selectors"><a href="{% url 'account_info' %}">Your Account</a></div>
-                <div class="explain">Your Stuffs!</div>
-            </div>
-        </div>
-		<div class="all_charts">
-			<div class="chart">
-				<h4 class="user_recent">Last quiz for {{user.alias}}</h4>
-				<canvas id="lastTest" width="400" height="400"></canvas>
+	<iv class="container">
+		<header class="header">
+			<div class="header__logo-box">
+				<div class="logo__background-bottom">
+					<div class="logo__background-middle">
+						<div class="logo__background-top">
+							<div class="logo__text">
+								<h1>Ultimate Fan</h1>
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
-			<div class="chart">
-				<h4 class="user_history">All quizzes for {{user.alias}}</h4>
-				<canvas id="myChart" width="400" height="400"></canvas>
+
+			<div class="header__userbox">
+				<div class="header__userbox-box">
+					<svg class="header__userbox-icon">
+						{% load static %}
+						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
+						{% if 'user_id' not in request.session %}
+						<span>Please Log In</span>
+						{% else %}
+						<span>{{ user.alias }}</span>
+						{% endif %}
+					</svg>
+				</div>
+				<div class="header__userbox-box">
+					{% if 'user_id' not in request.session %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
+							<span id="sign_in_box">Sign In</span>
+						</svg>
+					{% else %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
+							<span class="header__userbox-action--logout" id="logout"> Sign Out </span>
+						</svg>
+					{% endif %}
+				</div>
+
+			</div>
+
+		</header>
+		<nav class="nav">
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'quiz_home' %}">Quizzes</a></div>
+				<div class="nav__details">Test your knowledge!</div>
+			</div>
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'quiz_stats' %}">Quiz Stats</a></div>
+				<div class="nav__details">How boss are you?</div>
+			</div>
+			<div class="nav__box">
+				<div class="nav__item"><a href="{% url 'account_info' %}">Account</a></div>
+				<div class="nav__details">Your Stuffs!</div>
+			</div>
+		</nav>
+		<div class="quiz-stats">
+			<div class="quiz-stats__last-quiz">
+				<h2 class="quiz-stats__header">Last quiz for {{user.alias}}</h2>
+				<canvas class="quiz-stats__canvas" id="lastTest"></canvas>
+			</div>
+			<div class="quiz-stats__user-history">
+				<h2 class="quiz-stats__header">All quizzes for {{user.alias}}</h2>
+				<canvas class="quiz-stats__canvas" id="myChart"></canvas>
 			</div>
 		</div>
-        <div class="stat_divider">
-        	<h2>Leaderboards</h2>
-        </div>
-        <div class="leaderboard">
-            <table class="leader_data">
-                <thead>
-                	<th></th>
-                    <th class='table_alias'>Alias</th>
-                    <th>Correct</th>
-                    <th>Total</th>
-                    <th>Accuracy</th>
-                </thead>
+        <section class="leaderboard">
+        	<h1>Leaderboards</h1>
+            <div class="leaderboard__container">
+                <div class="leaderboard__header">
+                    <h3 class="leaderboard__col leaderboard__col-1">&nbsp;</h3class>                    
+                    <h3 class="leaderboard__col leaderboard__col-2">Alias</h3>
+                    <h3 class="leaderboard__col leaderboard__col-3">Correct</h3>
+                    <h3 class="leaderboard__col leaderboard__col-4">Total</h3>
+                    <h3 class="leaderboard__col leaderboard__col-5">Accuracy</h3>
+                </div>
                 {% for user in leaderboard %}
-                <tr>
-                	<td>{{user.4}}</td>
-                    <td class='table_alias'>{{user.0}}</td>
-                    <td>{{user.1}}</td>
-                    <td>{{user.2}}</td>
-                    <td>{{user.3}}%</td>
-                </tr>
+                <div class="leaderboard__user-list">
+                    <div class="leaderboard__col leaderboard__col-1">{{user.4}}</div>
+                    <div class="leaderboard__col leaderboard__col-2">{{user.0}}</div>
+                    <div class="leaderboard__col leaderboard__col-3">{{user.1}}</div>
+                    <div class="leaderboard__col leaderboard__col-4">{{user.2}}</div>
+                    <div class="leaderboard__col leaderboard__col-5">{{user.3}}%</div>
+                </div>
                 {% endfor %}
-            </table>
+            </div>
 
+        </iv>
+    </iv>
+    <footer class="footer">
+        <div class="footer__info">
+            <p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
         </div>
-    </div>
-    <footer>
-        <p>Copyright 2018 - All rights reserved - (ง'̀-'́)ง</p>
     </footer>
 
 

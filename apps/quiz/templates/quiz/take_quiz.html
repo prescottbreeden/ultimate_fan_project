@@ -55,7 +55,7 @@
 						<svg class="header__userbox-action">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
-							<a href="{% url 'logout' %}" class="logout"><span>Sign Out</span></a>
+							<span><a href="{% url 'logout' %}" class="logout" id="logout">Sign Out</a></span>
 						</svg>
 					{% endif %}
 				</div>
@@ -92,9 +92,9 @@
 						<form action="{% url 'submit_quiz' answers.value %}" method="POST">
 							{% csrf_token %}
 							<button type="submit" value="{{ answers.value }}" class="btn-answer">
-								<p class='div_value{{answers.value}}'> 
+								<span class='div_value{{answers.value}}'> 
 									{{ answers.answer.athlete.name }}
-								</p>
+								</span>
 								<svg class="quizzes__categories--svg">
 									{% load static %}
 									<use xlink:href="../static/quiz/sprite.svg#icon-chevron-thin-right"></use>

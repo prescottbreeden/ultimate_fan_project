@@ -5,15 +5,16 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
 	<title>Ultimate Fan</title>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.4.0/Chart.min.js"></script>
 	<link href="https://fonts.googleapis.com/css?family=Josefin+Slab:300,400,700|Source+Sans+Pro:300,400,700" rel="stylesheet">
 	{% load static %}
-	<link rel="stylesheet" href="{% static 'login/styles.min.css' %}" media="screen" title="no title"  charset="utf-8">
+	<link rel="stylesheet" href="{% static 'login/styles.css' %}" media="screen" title="no title"  charset="utf-8">
 	<script
 		src="https://code.jquery.com/jquery-3.3.1.js"
 		integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
 		crossorigin="anonymous">
 	</script>
-	<script src="{% static 'quiz/app.js' %}"></script>
+	<script src="{% static 'login/user_account.js' %}"></script>
 </head>
 <body>
 	<div class="container">
@@ -29,24 +30,37 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="header__userbox">
 				<div class="header__userbox-box">
 					<svg class="header__userbox-icon">
 						{% load static %}
 						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
+						{% if 'user_id' not in request.session %}
+						<span>Please Log In</span>
+						{% else %}
 						<span>{{ user.alias }}</span>
+						{% endif %}
 					</svg>
 				</div>
 				<div class="header__userbox-box">
-					<form action="" method="POST">
+					{% if 'user_id' not in request.session %}
 						<svg class="header__userbox-action">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
-							<span>sign in</span>
+							<a href="" class="logout"><span id="sign_in_box">Sign In</span></a>
 						</svg>
-					</form>
+					{% else %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
+							<span class="header__userbox-action--logout" id="logout"> Sign Out </span>
+						</svg>
+					{% endif %}
 				</div>
+
 			</div>
+
 		</header>
 		<nav class="nav">
 			<div class="nav__box">
@@ -71,8 +85,6 @@
 	</div>
 		<footer class="footer">
 			<div class="footer__info">
-				<p>Built With ~ Python, Django, SQLite, Bcrypt, Beautiful Soup, Chart.js, CSS3, HTML5, SASS, jQuery, AWS</p>
-				<p>All data for the trivia questions were scraped using Beautiful Soup.</p>
 				<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
 			</div>
 		</footer>

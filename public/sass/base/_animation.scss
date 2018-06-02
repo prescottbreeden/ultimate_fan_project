@@ -1,18 +1,18 @@
-@keyframes slide_off {
+@keyframes slide_on {
 	0% {
-		transform: translateX(0px);
+		transform: translateX(120rem);
 	}
 	100% {
-		transform: translateX(-1200px);
+		transform: translateX(0rem);
 	}
 }
 
-@keyframes slide_on {
+@keyframes slide_off {
 	0% {
-		transform: translateX(1200px);
+		transform: translateX(0rem)
 	}
 	100% {
-		transform: translateX(0px);
+		transform: translateX(-120rem);
 	}
 }
 

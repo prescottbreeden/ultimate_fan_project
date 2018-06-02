@@ -46,4 +46,11 @@ $(document).ready(function(){
             }
         });
     });
+
+    $("#logout").on('click', function() {
+        clearTimeout(timer);
+        $.ajax({
+            url: "/logout",
+          });
+    })
 });

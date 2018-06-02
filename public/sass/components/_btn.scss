@@ -80,5 +80,9 @@
         background-color: green;
     }
 
+    &:focus {
+        outline: none;
+    }
+
 }
 

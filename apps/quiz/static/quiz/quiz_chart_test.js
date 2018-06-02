@@ -1,6 +1,12 @@
 
 $(document).ready(function(){
 
+	$("#logout").on('click', function() {
+        $.ajax({
+            url: "/logout",
+		  });
+		location.reload();
+    })
 
 	$.get('/quiz/make_chart', function(data){
 	      var myData= data[0]
