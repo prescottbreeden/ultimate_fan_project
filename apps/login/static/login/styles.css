@@ -143,7 +143,7 @@ body {
       padding: 0 3rem;
       align-items: center;
       position: relative; }
-      .header__userbox-box:hover {
+      .header__userbox-box--status:hover {
         text-decoration: underline;
         cursor: pointer; }
     .header__userbox-icon {
@@ -161,7 +161,7 @@ body {
       height: 2.25rem;
       width: 2.25rem;
       fill: currentColor; }
-      .header__userbox-action--logout:link, .header__userbox-action--logout:visited {
+      .header__userbox-action--logout {
         text-decoration: none;
         color: var(--color-white); }
 
@@ -276,6 +276,7 @@ body {
   letter-spacing: 1px;
   background-color: var(--color-primary);
   color: var(--color-white);
+  margin: 0 auto;
   width: 90%;
   height: 100%;
   border: none;
@@ -334,6 +335,7 @@ body {
 
 .registration {
   width: 90%;
+  max-width: 115rem;
   height: 60rem;
   position: relative;
   display: flex;

@@ -33,23 +33,23 @@
 			</div>
 
 			<div class="header__userbox">
-				<div class="header__userbox-box">
+				<div class="header__userbox-box header__userbox-box--username">
 					<svg class="header__userbox-icon">
 						{% load static %}
 						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
 						{% if 'user_id' not in request.session %}
-						<span>Please Log In</span>
+						<span>Welcome</span>
 						{% else %}
 						<span>{{ user.alias }}</span>
 						{% endif %}
 					</svg>
 				</div>
-				<div class="header__userbox-box">
+				<div class="header__userbox-box header__userbox-box--status">
 					{% if 'user_id' not in request.session %}
 						<svg class="header__userbox-action">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
-							<a href="" class="logout"><span id="sign_in_box">Sign In</span></a>
+							<span id="sign_in_box">Sign In</span>
 						</svg>
 					{% else %}
 						<svg class="header__userbox-action">
@@ -60,33 +60,38 @@
 					{% endif %}
 				</div>
 			</div>
-		</header>
 
-		<nav class="nav">
-			<div class="nav__box">
-				<a href="{% url 'quiz_home' %}" class="nav__item">Quizzes</a>
-				<div class="nav__details">Test your knowledge!</div>
-			</div>
-			<div class="nav__box">
-				<a href="{% url 'quiz_stats' %}" class="nav__item">Quiz Stats</a>
-				<div class="nav__details">How boss are you?</div>
-			</div>
-			<div class="nav__box">
-				<a href="{% url 'account_info' %}" class="nav__item">Account</a>
-				<div class="nav__details">Your Stuffs!</div>
-			</div>
-		</nav>
+			</header>
 
-	<h2 class='account_alias'>{{user.alias}}</h2>
-	<div class="content">
-		<div class="chart">
-			<canvas id="bar_data" width="400" height="400"></canvas>
+			<nav class="nav">
+				<div class="nav__box">
+					<a href="{% url 'quiz_home' %}" class="nav__item">Quizzes</a>
+					<div class="nav__details">Test your knowledge!</div>
+				</div>
+				<div class="nav__box">
+					<a href="{% url 'quiz_stats' %}" class="nav__item">Quiz Stats</a>
+					<div class="nav__details">How boss are you?</div>
+				</div>
+				<div class="nav__box">
+					<a href="{% url 'account_info' %}" class="nav__item">Account</a>
+					<div class="nav__details">Your Stuffs!</div>
+				</div>
+			</nav>
+
+			<h2 class='account_alias'>{{user.alias}}</h2>
+			<div class="content">
+				<div class="chart">
+					<canvas id="bar_data" width="400" height="400"></canvas>
+				</div>
+			</div>
+
+			<footer class="footer">
+				<div class="footer__info">
+					<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
+				</div>
+			</footer>
+
 		</div>
-	</div>
-	<footer class="footer">
-		<div class="footer__info">
-			<p>This website was built by <a href="" class="footer__link">Prescott Breeden</a> and <a href="" class="footer__link">Stephen Silverstein</a> ~ Copyright &copy; 2018.</p>
-		</div>
-	</footer>
-</body>
+		<script> </script>
+	</body>
 </html>

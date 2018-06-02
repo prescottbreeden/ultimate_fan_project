@@ -33,18 +33,18 @@
 			</div>
 
 			<div class="header__userbox">
-				<div class="header__userbox-box">
+				<div class="header__userbox-box header__userbox-box--username">
 					<svg class="header__userbox-icon">
 						{% load static %}
 						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
 						{% if 'user_id' not in request.session %}
-						<span>Please Log In</span>
+						<span>Welcome</span>
 						{% else %}
 						<span>{{ user.alias }}</span>
 						{% endif %}
 					</svg>
 				</div>
-				<div class="header__userbox-box">
+				<div class="header__userbox-box header__userbox-box--status">
 					{% if 'user_id' not in request.session %}
 						<svg class="header__userbox-action">
 							{% load static %}
@@ -59,10 +59,10 @@
 						</svg>
 					{% endif %}
 				</div>
-
 			</div>
 
 		</header>
+		
 		<nav class="nav">
 			<div class="nav__box">
 				<div class="nav__item"><a href="{% url 'quiz_home' %}">Quizzes</a></div>

@@ -6,7 +6,7 @@ $(document).ready(function(){
             url: "/logout",
 		  });
 		location.reload();
-    })
+	})
 
 	$.get('/quiz/make_chart', function(data){
 	      var myData= data[0]

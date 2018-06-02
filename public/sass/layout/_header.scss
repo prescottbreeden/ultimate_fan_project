@@ -28,10 +28,12 @@
             align-items: center;
             position: relative;
 
+            &--status {
                 &:hover {
                     text-decoration: underline;
                     cursor: pointer;
                 }
+            }
         }
 
         &-icon {
@@ -52,12 +54,15 @@
             width: 2.25rem;
             fill: currentColor;
 
-            &--logout:link,
-            &--logout:visited {
+            &--logout {
                 text-decoration: none;
                 color: var(--color-white);
+                
             }
+
         }
+
+
     }
 }
 

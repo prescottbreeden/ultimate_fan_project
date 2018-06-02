@@ -8,6 +8,7 @@ $(document).ready(function() {
     })
 
     $('#sign_in_box').click(function() {
+        console.log('clicked sign in');
         $('#welcome_hero').stop().animate({left: -3000}, 'slow');
         setTimeout(function() {
             $('.btn__form').addClass('u-shadow');

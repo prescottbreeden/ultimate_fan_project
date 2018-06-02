@@ -31,34 +31,36 @@
 					</div>
 				</div>
 			</div>
+
 			<div class="header__userbox">
-					<div class="header__userbox-box">
-						<svg class="header__userbox-icon">
-							{% load static %}
-							<use xlink:href="../static/quiz/sprite.svg#icon-user"></use>
-							{% if 'user_id' not in request.session %}
-							<span>Please Log In</span>
-							{% else %}
-							<span>{{ user.alias }}</span>
-							{% endif %}
-						</svg>
-					</div>
-					<div class="header__userbox-box">
+				<div class="header__userbox-box header__userbox-box--username">
+					<svg class="header__userbox-icon">
+						{% load static %}
+						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
 						{% if 'user_id' not in request.session %}
-							<svg class="header__userbox-action">
-								{% load static %}
-								<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
-								<span id="sign_in_box">Sign In</span>
-							</svg>
+						<span>Welcome</span>
 						{% else %}
-							<svg class="header__userbox-action">
-								{% load static %}
-								<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
-								<span class="header__userbox-action--logout" id="logout"> Sign Out </span>
-							</svg>
+						<span>{{ user.alias }}</span>
 						{% endif %}
-					</div>
+					</svg>
 				</div>
+				<div class="header__userbox-box header__userbox-box--status">
+					{% if 'user_id' not in request.session %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
+							<span id="sign_in_box">Sign In</span>
+						</svg>
+					{% else %}
+						<svg class="header__userbox-action">
+							{% load static %}
+							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
+							<span class="header__userbox-action--logout" id="logout"> Sign Out </span>
+						</svg>
+					{% endif %}
+				</div>
+			</div>
+
 		</header>
 
 		<nav class="nav">
@@ -100,5 +102,6 @@
 			</div>
 		</footer>
 	</div>
+<script> </script>
 </body>
 </html>
