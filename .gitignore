@@ -2,4 +2,5 @@
 venv/
 node_modules/
 .vscode
-public/styles/
+public/styles/*.css
+public/styles/*.html
