@@ -39,13 +39,17 @@
         width: 70%;
         margin: 0 auto;
         padding: 20px;
-        background-color: var(--color-white-1);
+        background-color: var(--color-white);
         color: black;
         box-shadow: 0 1rem 2rem rgba(0,0,0,.3);
         border-radius: 5px;
         backface-visibility: hidden;
         
         animation: slide_on .4s ease-out 1 forwards;
+
+        @include respond(phone) {
+            width: 90%;
+        }
     }
 
     &__text {
@@ -69,8 +73,16 @@
             margin: 1.5rem 0;
         }
 
-        &--answer {
+        @include respond(phone) {
+            flex-direction: column;
+            width: 90%;
+        }
 
+        &--answer {
+            
+            @include respond(phone) {
+                width: 100%;
+            }
         }
     }
 }

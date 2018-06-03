@@ -10,11 +10,22 @@
     background-color: var(--color-grey-dark-3);
     font-size: 1.7rem;
 
+    @include respond(phone) {
+        flex-direction: column-reverse;
+        height: auto;
+    }
+
     &__container {
         width: 100%;
         display: inline-block;
         position: relative;
     }
+
+    // &__login {
+    //     @include respond(phone) {
+    //         display: none;
+    //     }
+    // }
 }
 
 .welcome {
@@ -34,6 +45,8 @@
     width: 100%;
     padding: 3rem;
     display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     backface-visibility: hidden;
     transition-duration: .2s;
 
@@ -42,18 +55,21 @@
     &__info {
         display: flex;
         flex-direction: column;
-        // border: 1px dashed red;
+        
     }
 
     &__text {
-        // border: 1px dashed red;
+        
         padding: 2rem 2rem;
-        display: inline-block;
         flex: 1 0 25%;
         font-family: 'Source Sans Pro';
         font-size: 2rem;
         font-weight: 200;
         letter-spacing: 1px;
+
+        @include respond(phone) {
+            font-size: 2rem;       
+        }
     }
 }
 

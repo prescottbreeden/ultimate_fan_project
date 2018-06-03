@@ -4,6 +4,10 @@
     align-items: flex-start;
     font-size: 2rem;
     text-align: center;
+
+    @include respond(phone) {
+        margin-bottom: 2rem;
+    }
     
     &__box {
         flex: 1 0 25%;
@@ -47,6 +51,10 @@
         color: #fff;
         border-bottom-left-radius: .5rem;
         border-bottom-right-radius: .5rem;
+
+        @include respond(phone) {
+            display: none;
+        }
     }
 
     &__item > * {

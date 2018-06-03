@@ -8,6 +8,10 @@
     width: 100%;
     background-color: var(--color-grey-dark-3);
 
+    @include respond(phone) {
+        position: relative;
+    }
+
     &__link {
         &:link,
         &:visited {
@@ -33,5 +37,9 @@
         letter-spacing: 1px;
         text-align: center;
         font-size: 2rem;
+
+        @include respond(phone) {
+            margin: 0 1rem;
+        }
     }
 }

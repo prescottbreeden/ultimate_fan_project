@@ -45,10 +45,14 @@ body {
   background-repeat: no-repeat;
   margin-bottom: 12rem;
   min-height: 100vh; }
+  @media only screen and (max-width: 37.5em) {
+    body {
+      margin-bottom: 0rem; } }
 
 .container {
   border-radius: 3px;
-  background-color: var(--color-blue-grey); }
+  background-color: var(--color-blue-grey);
+  min-height: 100vh; }
 
 body {
   font-family: 'Josefin Slab', sans-serif;
@@ -65,6 +69,9 @@ body {
   font-size: 2rem;
   font-weight: 200;
   color: var(--color-grey-light); }
+  @media only screen and (max-width: 37.5em) {
+    .heading-secondary {
+      font-size: 1rem; } }
 
 @keyframes slide_on {
   0% {
@@ -108,6 +115,9 @@ body {
   margin-top: 6rem;
   width: 100%;
   background-color: var(--color-grey-dark-3); }
+  @media only screen and (max-width: 37.5em) {
+    .footer {
+      position: relative; } }
   .footer__link:link, .footer__link:visited {
     color: var(--color-grey-light);
     background-color: var(--color-grey-dark-3);
@@ -125,6 +135,9 @@ body {
     letter-spacing: 1px;
     text-align: center;
     font-size: 2rem; }
+    @media only screen and (max-width: 37.5em) {
+      .footer__info p {
+        margin: 0 1rem; } }
 
 .header {
   font-size: 2rem;
@@ -206,6 +219,9 @@ body {
   align-items: flex-start;
   font-size: 2rem;
   text-align: center; }
+  @media only screen and (max-width: 37.5em) {
+    .nav {
+      margin-bottom: 2rem; } }
   .nav__box {
     flex: 1 0 25%;
     perspective: 100rem; }
@@ -237,6 +253,9 @@ body {
     color: #fff;
     border-bottom-left-radius: .5rem;
     border-bottom-right-radius: .5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .nav__details {
+        display: none; } }
   .nav__item > * {
     text-decoration: none;
     color: #fff; }
@@ -278,7 +297,7 @@ body {
     letter-spacing: 1px; }
     @media only screen and (max-width: 37.5em) {
       .btn__info {
-        width: 60%; } }
+        width: 100%; } }
   .btn__form {
     width: 100%; }
   .btn:hover {
@@ -324,6 +343,11 @@ body {
   text-transform: uppercase;
   letter-spacing: 1px;
   width: 90%; }
+  @media only screen and (max-width: 37.5em) {
+    .leaderboard {
+      width: 95%;
+      padding: 1rem;
+      box-shadow: none; } }
   .leaderboard__container {
     display: flex;
     flex-direction: column;
@@ -335,6 +359,9 @@ body {
     justify-content: space-between;
     align-items: flex-start;
     font-size: 2.5rem; }
+    @media only screen and (max-width: 37.5em) {
+      .leaderboard__header {
+        font-size: 2rem; } }
   .leaderboard__user-list {
     text-transform: none;
     display: flex;
@@ -342,9 +369,13 @@ body {
     font-size: 2.5rem; }
     @media only screen and (max-width: 37.5em) {
       .leaderboard__user-list {
+        font-size: 2rem;
         align-items: center; } }
   .leaderboard__col {
     display: inline-block; }
+    @media only screen and (max-width: 37.5em) {
+      .leaderboard__col {
+        display: flex; } }
     .leaderboard__col-1 {
       flex: 1; }
     .leaderboard__col-2 {
@@ -353,6 +384,9 @@ body {
       flex: 2; }
     .leaderboard__col-4 {
       flex: 2; }
+      @media only screen and (max-width: 37.5em) {
+        .leaderboard__col-4 {
+          display: none; } }
     .leaderboard__col-5 {
       flex: 1; }
       @media only screen and (max-width: 37.5em) {
@@ -388,12 +422,15 @@ body {
   width: 70%;
   margin: 0 auto;
   padding: 20px;
-  background-color: var(--color-white-1);
+  background-color: var(--color-white);
   color: black;
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.3);
   border-radius: 5px;
   backface-visibility: hidden;
   animation: slide_on .4s ease-out 1 forwards; }
+  @media only screen and (max-width: 37.5em) {
+    .question__container {
+      width: 90%; } }
 
 .question__text {
   font-size: 2rem;
@@ -412,6 +449,13 @@ body {
   .question__answer-list > * {
     flex: 1 0 45%;
     margin: 1.5rem 0; }
+  @media only screen and (max-width: 37.5em) {
+    .question__answer-list {
+      flex-direction: column;
+      width: 90%; } }
+  @media only screen and (max-width: 37.5em) {
+    .question__answer-list--answer {
+      width: 100%; } }
 
 .right_answer {
   background-color: rgba(255, 0, 0, 0.8); }
@@ -421,16 +465,22 @@ body {
 
 .quiz-stats {
   position: relative;
+  width: 90%;
   display: flex;
   justify-content: space-around;
-  margin: 0rem 3rem;
+  margin: 0rem auto;
   padding: 3rem;
   background-image: linear-gradient(45deg, var(--color-primary-light) 0%, var(--color-primary-light) 3%, var(--color-primary) 3%, var(--color-primary) 97%, var(--color-primary-light) 97%);
   box-shadow: 0 1rem 2rem rgba(0, 0, 0, 0.25); }
   @media only screen and (max-width: 37.5em) {
     .quiz-stats {
       flex-direction: column;
-      align-items: center; } }
+      align-items: center;
+      width: 95%;
+      box-shadow: none; } }
+  @media only screen and (max-width: 37.5em) {
+    .quiz-stats__user-history {
+      margin-top: 2rem; } }
   .quiz-stats__header {
     font-family: 'Josefin Slab', sans-serif;
     font-size: 2.5rem;
@@ -439,6 +489,11 @@ body {
   .quiz-stats__canvas {
     height: 40rem !important;
     width: 40rem !important; }
+    @media only screen and (max-width: 37.5em) {
+      .quiz-stats__canvas {
+        width: 90% !important;
+        height: auto !important;
+        margin: 0 auto !important; } }
 
 .quizzes {
   width: 80%;
@@ -452,7 +507,8 @@ body {
     @media only screen and (max-width: 37.5em) {
       .quizzes__categories {
         flex-direction: column;
-        flex-wrap: nowrap; } }
+        flex-wrap: nowrap;
+        min-height: 100vh; } }
     .quizzes__categories--item {
       width: 100%;
       border-radius: inherit;

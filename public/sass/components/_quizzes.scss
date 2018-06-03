@@ -12,6 +12,7 @@
         @include respond(phone) {
             flex-direction: column;
             flex-wrap: nowrap;
+            min-height: 100vh;
         }
 
         &--item {
@@ -24,8 +25,6 @@
             &:hover {
                 margin-left: 1rem;
             }
-
-
         }
         
         &--link > * {

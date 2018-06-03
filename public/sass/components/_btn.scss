@@ -42,7 +42,7 @@
         letter-spacing: 1px;
 
         @include respond(phone) {
-            width: 60%;
+            width: 100%;
         }
     }
 

@@ -28,6 +28,10 @@
             var(--color-primary) 3%, 
             var(--color-primary) 97%, 
             var(--color-primary-light) 97%);
+
+            @include respond(phone) {
+                height: 30rem;
+            }
         
     }
 
@@ -50,5 +54,19 @@
         //     var(--color-white) 97%, 
         //     var(--color-primary-light) 97%);
 
+    }
+ 
+    &__chart::after {
+        content: "Total Questions Answered";
+        font-size: 2rem;
+        color: black;
+        display: block;
+        text-align: center;
+
+        @include respond(phone) {
+            content: "Please visit us on a computer for better data visualization.";
+            color: red;
+            font-size: 2rem;
+        }
     }
 }

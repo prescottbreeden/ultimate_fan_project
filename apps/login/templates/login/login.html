@@ -84,6 +84,7 @@
 		</nav>
 
 		<div class="registration">
+				<button class="btn__close" id="close_forms">&times;</button>
 			<div class="registration__container">
 				<div class="heading-secondary">
 					<h2>Register</h2>
@@ -164,7 +165,7 @@
 		
 				<!-- {{request.session.status}} -->
 				
-			<div class="registration__container">
+			<div class="registration__container registration__login">
 				<div class="u-margin-bottom-medium">
 					<div class="heading-secondary">
 						<h2>Login</h2>
@@ -207,7 +208,7 @@
 					</div>
 					<button class="btn btn__form">Login &rarr;</button>
 				</form>
-				<button class="btn__close" id="close_forms">&times;</button>
+				
 				<div class="errors">
 					{% if messages %}
 						<ul class="errors__list">

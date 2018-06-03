@@ -65,9 +65,14 @@ body {
     background-repeat: no-repeat;
     margin-bottom: 12rem;
     min-height: 100vh;
+
+    @include respond(phone) {
+        margin-bottom: 0rem;
+    }
 }
 
 .container {
     border-radius: 3px;
     background-color: var(--color-blue-grey);
+    min-height: 100vh;
 }

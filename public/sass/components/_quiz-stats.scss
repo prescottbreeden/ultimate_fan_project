@@ -1,8 +1,9 @@
 .quiz-stats {
     position: relative;
+    width: 90%;
     display: flex;
     justify-content: space-around;
-    margin: 0rem 3rem;
+    margin: 0rem auto;
     padding: 3rem;
     background-image: linear-gradient(
         45deg, 
@@ -16,6 +17,8 @@
     @include respond(phone) {
         flex-direction: column;
         align-items: center;
+        width: 95%;
+        box-shadow: none;
     }
 
     &__last-quiz {
@@ -25,6 +28,9 @@
 
     &__user-history {
 
+        @include respond(phone) {
+            margin-top: 2rem;
+        }
 
     }
 
@@ -38,6 +44,12 @@
     &__canvas {
         height: 40rem !important;
         width: 40rem !important;
+
+        @include respond(phone) {
+            width: 90% !important;
+            height: auto !important;
+            margin: 0 auto !important;
+        }
     }
 
 }
