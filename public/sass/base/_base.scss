@@ -52,6 +52,10 @@ html {
     @include respond(tab-port) { 
         font-size: 50%; 
     }
+    
+    @include respond(med-desktop) {
+        font-size: 60%;
+    }
 
     @include respond(big-desktop) {
         font-size: 75%; 

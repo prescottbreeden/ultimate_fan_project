@@ -32,6 +32,20 @@
             @include respond(phone) {
                 height: 30rem;
             }
+
+            // @include respond(tab-land) {
+            //     width: 72rem;
+            // }
+
+            @include respond(med-desktop) {
+                height: 75rem;
+                width: 120rem;
+            }
+
+            @include respond(big-desktop) {
+                height: 75rem;
+                width: 130rem;
+            }
         
     }
 
@@ -68,5 +82,9 @@
             color: red;
             font-size: 2rem;
         }
+
+        // @include respond(med-desktop) {
+        //     content: "";
+        // }
     }
 }
