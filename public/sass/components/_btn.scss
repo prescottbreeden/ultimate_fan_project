@@ -40,6 +40,10 @@
         margin: 0 auto;
         text-transform: uppercase;
         letter-spacing: 1px;
+
+        @include respond(phone) {
+            width: 60%;
+        }
     }
 
     &__form {

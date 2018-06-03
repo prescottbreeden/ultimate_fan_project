@@ -54,6 +54,11 @@
         text-decoration: none;
         color: var(--color-white);
         align-self: stretch;
+
+        &:hover {
+            border-bottom: 2px solid var(--color-white);
+            cursor: pointer;
+        }
         
     }
 

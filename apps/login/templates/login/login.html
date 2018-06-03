@@ -19,8 +19,10 @@
 </head>
 <body>
 	<div class="container">
-		<header class="header">
-			<div class="header__logo-box">
+	
+		<header class="header"> <!-- row container -->
+
+			<div class="header__logo-box"> 	<!-- logo container -->
 				<div class="logo__background-bottom">
 					<div class="logo__background-middle">
 						<div class="logo__background-top">
@@ -30,37 +32,40 @@
 						</div>
 					</div>
 				</div>
-			</div>
+			</div> 							<!-- logo container -->
 
-			<div class="header__userbox">
-				<div class="header__userbox-box header__userbox-box--username">
-					<svg class="header__userbox-icon">
+			<div class="header__controls">	<!-- controls container -->
+
+				<div class="header__control-box">
+					<svg class="header__icon">
 						{% load static %}
 						<use xlink:href="../static/login/sprite.svg#icon-user"></use>
 						{% if 'user_id' not in request.session %}
-						<span>Welcome</span>
+						<span class="header__text">Welcome</span>
 						{% else %}
-						<span>{{ user.alias }}</span>
+						<span><a href="/account" class="header__text"> {{ user.alias }} </a></span>
 						{% endif %}
 					</svg>
 				</div>
-				<div class="header__userbox-box header__userbox-box--status">
+
+				<div class="header__control-box">
 					{% if 'user_id' not in request.session %}
-						<svg class="header__userbox-action">
+						<svg class="header__icon">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-enter"></use>
-							<span id="sign_in_box">Sign In</span>
+							<span class="header__text" id="sign_in_box">Sign In</span>
 						</svg>
 					{% else %}
-						<svg class="header__userbox-action">
+						<svg class="header__icon">
 							{% load static %}
 							<use xlink:href="../static/login/sprite.svg#icon-exit"></use>
-							<span><a href="/logout" class="header__userbox-action--logout"> Sign Out </a></span>
+							<span><a href="/logout" class="header__text"> Sign Out </a></span>
 						</svg>
 					{% endif %}
 				</div>
-			</div>
-			
+
+			</div>							<!-- controls container -->
+
 		</header>
 
 		<nav class="nav">
