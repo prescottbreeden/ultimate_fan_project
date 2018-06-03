@@ -118,6 +118,9 @@ body {
   margin-top: 6rem;
   width: 100%;
   background-color: var(--color-grey-dark-3); }
+  @media only screen and (max-width: 56.75em) {
+    .footer {
+      position: relative; } }
   @media only screen and (max-width: 37.5em) {
     .footer {
       position: relative; } }
@@ -138,6 +141,9 @@ body {
     letter-spacing: 1px;
     text-align: center;
     font-size: 2rem; }
+    @media only screen and (max-width: 56.75em) {
+      .footer__info p {
+        margin: 0 1rem; } }
     @media only screen and (max-width: 37.5em) {
       .footer__info p {
         margin: 0 1rem; } }
