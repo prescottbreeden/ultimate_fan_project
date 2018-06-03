@@ -9,6 +9,11 @@
         flex-wrap: wrap;
         align-items: center;
 
+        @include respond(phone) {
+            flex-direction: column;
+            flex-wrap: nowrap;
+        }
+
         &--item {
             width: 100%;
             border-radius: inherit;
@@ -19,6 +24,8 @@
             &:hover {
                 margin-left: 1rem;
             }
+
+
         }
         
         &--link > * {
@@ -53,6 +60,11 @@
             &:hover {
                 background-color: green;
                 cursor: pointer;
+            }
+
+            @include respond(phone) {
+                width: 60%;
+                display: block;
             }
         }
 
