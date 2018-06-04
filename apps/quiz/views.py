@@ -4,6 +4,7 @@ from apps.quiz.models import *
 from apps.login.models import *
 from operator import itemgetter
 
+# - - - - - = = = QUIZ PAGE RENDER = = = - - - - - 
 def quiz(request):
 	if 'user_id' not in request.session:
 		return redirect('/')
@@ -13,14 +14,19 @@ def quiz(request):
 		}
 	return render(request, 'quiz/quiz.html', context)
 
+# - - - - - = = = CREATE QUIZ (POST) = = = - - - - - 
 def create_quiz(request, id):
 	if 'user_id' not in request.session:
 		return redirect('/')
 	request.session['cat_id'] = id
 	if 'dont_repeat' not in request.session:
 		request.session['dont_repeat'] = []
+
+	# set don't repeat length to 7 (wiggle room between min 5 questions for quiz and small question sets to choose from for certain categories)
 	if len(request.session['dont_repeat']) > 7:
 		request.session['dont_repeat'] = []
+
+	# create quiz from 
 	trivia = Quiz.objects.make_quiz(id=id, dont_repeat = request.session['dont_repeat'])
 	context = {
 		'user': User.objects.get(id=request.session['user_id']),
@@ -30,14 +36,19 @@ def create_quiz(request, id):
 	print(request.session['dont_repeat'])
 	return render(request, 'quiz/take_quiz.html', context)
 
+# - - - - - = = = SUBMIT QUIZ (POST) = = = - - - - - 
 def submit_quiz(request, id):
 	if 'user_id' not in request.session:
 		return redirect('/')
+	
+	# upload score to database
 	Quiz.objects.create(
 		score = id,
 		user = User.objects.get(id=request.session['user_id']),
 		category = Category.objects.get(id = request.session['cat_id']),
 		)
+
+	# race condition hack - temp fix for desktop, does not fix mobile: needs refactor
 	sleep(1.5)
 	if 'quiz_counter' not in request.session:
 		request.session['quiz_counter'] = 1
@@ -47,24 +58,24 @@ def submit_quiz(request, id):
 	request.session['quiz_counter'] = 0
 	return redirect('/quiz/quiz_stats')
 
-def quiz_end(request):
-	if 'user_id' not in request.session:
-		return redirect('/')
-	context = {
-		'user': User.objects.get(id=request.session['user_id']),
-	}
-	request.session['dont_repeat'] = []
-	return render(request, 'quiz/quiz_end.html', context)
+# ******** ROUTE NO LONGER IN USE? **************
 
+# - - - - - = = = QUIZ END (RENDER) = = = - - - - - 
+# def quiz_end(request):
+# 	if 'user_id' not in request.session:
+# 		return redirect('/')
+# 	context = {
+# 		'user': User.objects.get(id=request.session['user_id']),
+# 	}
+# 	request.session['dont_repeat'] = []
+# 	return render(request, 'quiz/quiz_end.html', context)
+
+# - - - - - = = = QUIZ STATS (RENDER) = = = - - - - - 
 def quiz_stats(request):
 	if 'user_id' not in request.session:
 		return redirect('/')
 	userlist = User.objects.all()
 	leader_boardlist = []
-
-	# this is where the divide zero bug is happening
-	# my gut thinks this is because session is somehow getting dropped - more testing...
-	# if Quiz.objects.filter(user = user) is null: or something...
 
 	for user in userlist:
 		if len(Quiz.objects.filter(user = user)) == 0:

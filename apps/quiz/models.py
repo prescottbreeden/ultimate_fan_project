@@ -82,6 +82,7 @@ class Quiz_Manager(models.Manager):
 			}]
 		},
 		return HttpResponse(json.dumps(chart_data), content_type="application/json")
+	
 	def make_quiz(self, id, dont_repeat):
 		all_crap = {}
 		quiz = {}
