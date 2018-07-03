@@ -1,4 +1,5 @@
 *.pyc
+ultimateEnv/
 venv/
 node_modules/
 .vscode
