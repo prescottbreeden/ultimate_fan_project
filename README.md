@@ -8,5 +8,5 @@ login to play.  passwords are hashed and salted with bcrypt.  all trivia questio
 2. create environment and run 'pip install -r requirements.txt'
 
 # To Run
-1. run 'python3 manage.py runserver' in terminal from project root (ctrl-c will terminate the process)
+1. run 'python3 manage.py runserver' in CLI from project root (ctrl-c will terminate the process)
 2. app will be running at 'localhost:8000' in your browser
